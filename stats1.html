@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+<meta property="og:title" content="Jordan Inter-Agency Financial Tracking - 2015"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Jordan Inter-Agency Financial Tracking - 2015"/>
+<meta property="og:description" content="Jordan Inter-Agency Financial Tracking - 2015"/>
+    <title>Player Statistics - 2015 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+
+    <link rel="stylesheet" href="css/bootswatch.min.css">
+    <link rel="stylesheet" href="css/font-humanitarian.css">
+
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css"/>
+    <!---->
+    <!-- Add IntroJs styles and JS -->
+    <link rel="stylesheet" type="text/css" href="css/introjs.min.css" >
+    <script type="text/javascript" src="js/intro.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <!-- map the data to the GeoJSON object -->
+    <script src="js/data-jo.js"></script>
+    <!-- hide and display Disclaimer -->
+    <script>
+        function show(shown, hidden) {
+          document.getElementById(shown).style.display='block';
+          document.getElementById(hidden).style.display='none';
+          return false;
+        }
+    </script>
+  </head>
+
+  <body>
+    <div class ="col-sm-4 col-md-offset4" id="loading">
+        <small>This webpage does not work on IE8 or older... Upgrade your browser if needed</a></a></small>
+    </div>
+    <div class="container" id="dashboard">
+        <div class="row" >
+            <h1>
+               <a href="http://pakcricketjo.com">
+               <img src="images/logo.png" style="height: 70; width: 150"></a>
+               <strong>Player Statistics - 2015</strong>
+            </h1>
+                This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
+                For more information, see <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  http://www.jrpsc.org/financial-tracking/ </a>.
+                You can also consult the <a href="index1.html" target="_blank"> bubble chart version</a>.<br>
+            <h2>
+            <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary">$ <span id="totalrequired" class="number-display"></span></a></a>
+            <a class="btn btn-default">Funds Received (USD) <a  class="btn btn-info">$ <span id="totalreceived" class="number-display"></span></a></a>
+            <a class="btn btn-default">Not yet funded (USD) <a  class="btn btn-warning">$ <span id="totalgap" class="number-display"></span></a></a>
+           <!--
+           <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
+           -->
+            </h2>
+            <br>
+            <div id="count-info" >
+                 You have selected <strong><span class="filter-count "></span> reports</strong> out of a total of <span class="total-count "></span> reports
+                 <a class="btn btn-primary btn-sm" href="javascript:dc.filterAll();dc.redrawAll();">Click to reset all filters</a>
+            </div>
+
+       </div>
+       <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+
+                <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
+
+                <div id="quarter"> <center> <h4>Quarters</h4> </center></div>
+                </div>
+                <div id="sector" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
+                  <center> <h4>Received funds across Sectors</h4> </center>
+                </div>
+              </div>
+              <div class="row">
+                <div id="gapReceived" class="col-xs-12" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
+                  <center> <h4>Distribution of received funds/gap across Sectors</h4> </center>
+                </div>
+              </div>
+
+              <div class="row">
+                <center>
+                   <table width=100% cellspacing=1 cellpadding=1>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><img src="images/basicassistance.svg" alt="Basic Needs" height="30px" width="30px"></td>
+                            <td><img src="images/education.svg" alt="Education" height="30px" width="30px"></td>
+                            <td><img src="images/foodsecurity.svg" alt="Food Security" height="30px" width="30px"></td>
+                            <td><img src="images/health.svg" alt="Health" height="30px" width="30px"></td>
+                            <td><img src="images/protection.svg" alt="Protection" height="30px" width="30px"></td>
+                            <td><img src="images/shelter.svg" alt="Shelter" height="30px" width="30px"></td>
+                            <td><img src="images/wash.svg" alt="WASH" height="30px" width="30px"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </center> 
+                <br>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div id="partner" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
+                  <center> <h4>Received funds per Agency</h4> </center>
+                </div>
+                <div id="partnergap" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
+                  <center> <h4>Funding gap per Agency</h4> </center>
+                </div>
+              </div>
+            </div>
+       </div>
+    </div>
+
+    <div width="100%" style="background:#006CA9; height:25px" align=right>
+        <span  class="demoTableRow"><font color="#FFFFFF">
+            Produced by Information Management Unit, UNHCR, Jordan. For more information please contact <a href="http://data.unhcr.org/jordan/team.html" target="_blank" >our team</a> </font>
+         </span> &nbsp;&nbsp;&nbsp;
+    </div>
+
+    <script type="text/javascript" src="js/d3_002.js"></script>
+    <script type="text/javascript" src="js/crossfilter.js"></script>
+    <script type="text/javascript" src="js/dc.js"></script>
+    <script type="text/javascript" src="js/d3.tip.min.js"></script>
+    <script>
+
+        $('#dashboard').hide();
+      //  var gap_chart = dc.pieChart("#gap");
+        var sector_chart = dc.rowChart("#player");
+        var quarter_chart = dc.rowChart("#runs");
+        var partner_chart = dc.rowChart("#wickets");
+        var partnergap_chart = dc.rowChart("#overs");
+        var gapReceived_chart = dc.barChart("#runsdiff");
+
+
+        d3.csv("stats/stats.csv", function(csv_data){
+            var numberFormat = d3.format(",f");
+            var cf = crossfilter(csv_data);
+            var all = cf.groupAll();
+            // Implement bookmarking chart filters status --> Thanks to https://github.com/franckalbinet
+            // Serializing filters values in URL
+            function getFiltersValues() {
+                var filters = [
+                //    { name: 'gap', value: gap_chart.filters()},
+                    { name: 'player', value: player_chart.filters()},
+                    { name: 'runs', value: runs_chart.filters()},
+                    { name: 'wickets', value: wickets_chart.filters()},
+                    { name: 'runscon', value: runscon_chart.filters()}
+                    ];
+
+                var recursiveEncoded = $.param( filters );
+                location.hash = recursiveEncoded;
+            }
+            // Init chart filters
+            function initFilters() {
+                // Get hash values
+                var parseHash = /^#player=([A-Za-z0-9,_\-\/\s]*)&status=([A-Za-z0-9,_\-\/\s]*)&org=([A-Za-z0-9,_\-\/\s]*)&map=([A-Za-z0-9,_\-\/\s]*)$/;
+                var parsed = parseHash.exec(decodeURIComponent(location.hash));
+                function filter(chart, rank) {  // for instance chart = sector_chart and rank in URL hash = 1
+                    // sector chart
+                    if (parsed[rank] == "") {
+                        chart.filter(null);
+                    }
+                    else {
+                        var filterValues = parsed[rank].split(",");
+                        for (var i = 0; i < filterValues.length; i++ ) {
+                            chart.filter(filterValues[i]);
+                        }
+                    }
+                }
+                if (parsed) {
+                    filter(player_chart, 1);
+                    filter(runs_chart, 2);
+                    filter(wickets_chart, 3);
+                    filter(runscon_chart, 4);
+                //    filter(gap_chart, 5);
+
+                }
+            }
+
+            // tooltips for row chart
+            var rowTip = d3.tip()
+                  .attr('class', 'd3-tip')
+                  .offset([-10, 0])
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " runs"; });
+
+            // tooltips for pie chart
+            var pieTip = d3.tip()
+                  .attr('class', 'd3-tip')
+                  .offset([-10, 0])
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " runs"; });
+
+            // tooltips for bar chart
+            var barTip = d3.tip()
+                  .attr('class', 'd3-tip')
+                  .offset([-10, 0])
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " runs";});
+
+
+            cf.player = cf.dimension(function(d) { return d.Player; });
+            var quarterByTotal = cf.player.group().reduceSum(function (d) { return d.RunsScored; });
+            var quarter = cf.player.group();
+            player_chart.width(250).height(200)
+                .dimension(cf.player)
+                .group(quarterByTotal)
+                .elasticX(true)
+                .on("filtered", getFiltersValues)
+                .data(function(group) { return group.top(4); })
+                .colors(['#5bc0de'])
+                .colorDomain([0,0])
+                .colorAccessor(function(d, i){return 1;})
+                .xAxis().ticks(4).tickFormat(d3.format("s"));
+
+
+            cf.runs = cf.dimension(function(d) { return d.RunsScored; });
+            var sectorByTotal = cf.runs.group().reduceSum(function (d) { return d.RunsScored; });
+            var sector = cf.runs.group();
+            runs_chart.width(250).height(210)
+                .dimension(cf.runs)
+                .group(sectorByTotal)
+                .elasticX(true)
+                .on("filtered", getFiltersValues)
+                .data(function(group) { return group.top(10); })
+                .colors(['#5bc0de'])
+                .colorDomain([0,0])
+                .colorAccessor(function(d, i){return 1;})
+                .xAxis().ticks(4).tickFormat(d3.format("s"));
+
+
+            cf.wickets = cf.dimension(function(d) { return d.Wickets; });
+            var partnerByTotal = cf.wickets.group().reduceSum(function (d) { return d.Wickets; });
+            var partner = cf.wickets.group();
+            partner_chart.width(250).height(500)
+                .dimension(cf.wickets)
+                .group(partnerByTotal)
+                .elasticX(true)
+                .on("filtered", getFiltersValues)
+                .data(function(group) { return group.top(20); })
+                .colors(['#5bc0de'])
+                .colorDomain([0,0])
+                .colorAccessor(function(d, i){return 1;})
+                .xAxis().ticks(4).tickFormat(d3.format("s"));
+
+            cf.runscon = cf.dimension(function(d) { return d.RunsConceded; });
+            var partnergapByTotal = cf.runscon.group().reduceSum(function (d) { return (d.RunsConceded); });
+            var partnergap = cf.runscon.group();
+            partnergap_chart.width(250).height(500)
+                .dimension(cf.runscon)
+                .group(partnergapByTotal)
+                .elasticX(true)
+                .on("filtered", getFiltersValues)
+                .data(function(group) { return group.top(20); })
+                .colors(['#e99002'])
+                .colorDomain([0,0])
+                .colorAccessor(function(d, i){return 1;})
+                .xAxis().ticks(4).tickFormat(d3.format("s"));
+
+
+            cf.sectorGroup = cf.dimension(function(d) { return d.Sector; });
+            cf.gapReceived = cf.dimension(function(d) { return d.Receive; });
+            var gapByTotal = cf.sectorGroup.group().reduceSum(function (d) { return (d.Gap); });
+            var receiveByTotal = cf.sectorGroup.group().reduceSum(function (d) { return d.Receive; });
+            var sectors = ["Basic Needs","Education","Food","Health","Protection","Sector","Shelter","WASH"];
+            var gapReceived = cf.gapReceived.group();
+            var sectorGroup = cf.sectorGroup.group();
+            /* when any bar is clicked, recolor the chart */
+            var colorRenderlet = function (_chart) {
+                _chart.selectAll("rect.bar")
+                        .on("click", function (d) {
+                            function setAttr(selection, keyName) {
+                                selection.style("fill", function (d) {
+                                    if (d[keyName] == "Received") return "#5bc0de";
+                                    else if (d[keyName] == "Gap") return "#e99002";
+                                });
+                            };
+                            setAttr(_chart.selectAll("g.stack").selectAll("rect.bar"), "layer")
+                            setAttr(_chart.selectAll("g.dc-legend-item").selectAll("rect"), "name")
+                        });
+            };            
+            gapReceived_chart.width(500).height(240)
+                .margins({top: 50, right: 20, left: 75, bottom: 20})
+                .dimension(sectorGroup)
+                .group(receiveByTotal,"Received")
+                .stack(gapByTotal,"Gap")
+                .x(d3.scale.ordinal().domain(sectorGroup))
+                .xUnits(dc.units.ordinal)
+                .renderHorizontalGridLines(true)
+                .barPadding(0.2)
+                .outerPadding(0.05)
+                .elasticY(true)
+                .brushOn(false)
+                .renderlet(colorRenderlet)
+                .legend(dc.legend().x(375).y(10).itemHeight(15).gap(1));
+
+            dc.dataCount("#count-info")
+                .dimension(cf)
+                .group(all);
+
+            var byRequired = cf.dimension(function(d) { return d.Required; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Required; });
+            dc.numberDisplay("#totalrequired")
+                   .valueAccessor(function(d){return +d})
+                    .group(byRequiredGroup);
+
+            var byReceived = cf.dimension(function(d) { return d.Receive; });
+            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Receive; });
+            dc.numberDisplay("#totalreceived")
+                   .valueAccessor(function(d){return +d})
+                    .group(byReceivedGroup);
+
+            var byGap = cf.dimension(function(d) { return d.Gap; });
+            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Gap; });
+            dc.numberDisplay("#totalgap")
+                   .valueAccessor(function(d){return +d})
+                    .group(byGapGroup);
+
+          // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
+          // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
+            var byPercentage = cf.dimension(function (d) { return (d.Gap / d.Required);});
+            var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return (d.Gap / d.Required);});
+            dc.numberDisplay("#totalpercentage")
+                   .valueAccessor(function(d){return +d})
+                    .group(byPercentageGroup);
+
+
+            $('#loading').hide();
+            $('#dashboard').show();
+            dc.renderAll();
+
+            /* Customised infobox */
+            d3.selectAll("g.row").call(rowTip);
+            d3.selectAll("g.row").on('mouseover', rowTip.show).on('mouseout', rowTip.hide);
+
+            var stackChart = 'div#gapReceived.dc-chart rect';
+            d3.selectAll(stackChart).call(barTip);
+            d3.selectAll(stackChart).on('mouseover', barTip.show).on('mouseout', barTip.hide);
+
+            }
+            );
+
+    </script>
+    <script src="js/bootstrap.js"></script>
+
+      <!-- Piwik -->
+        <script type="text/javascript">
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://data.unhcr.org/piwik/" : "http://data.unhcr.org/piwik/");
+        document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+        </script><script type="text/javascript">
+        try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+        } catch( err ) {}
+        </script><noscript>
+    <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
+      <!-- End Piwik Tracking Code -->
+
+
+  </body>
+</html>
