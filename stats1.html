@@ -7,10 +7,12 @@
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Jordan Inter-Agency Financial Tracking - 2015"/>
 <meta property="og:description" content="Jordan Inter-Agency Financial Tracking - 2015"/>
-    <title>Player Statistics - 2015 </title>
+    <title>Jordan Inter-Agency Financial Tracking - 2015 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-       <link rel="stylesheet" href="css/bootswatch.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+
+    <link rel="stylesheet" href="css/bootswatch.min.css">
     <link rel="stylesheet" href="css/font-humanitarian.css">
 
     <link rel="stylesheet" type="text/css" href="css/dc.css"/>
@@ -23,6 +25,7 @@
     <script src="js/jquery.js"></script>
     <!-- map the data to the GeoJSON object -->
     <script src="js/data-jo.js"></script>
+    <link href="http://www.unhcr.org/favicon.ico" rel="icon" type="image/x-icon">
     <!-- hide and display Disclaimer -->
     <script>
         function show(shown, hidden) {
@@ -38,11 +41,19 @@
         <small>This webpage does not work on IE8 or older... Upgrade your browser if needed</a></a></small>
     </div>
     <div class="container" id="dashboard">
+		
+        <div class="socialmedia" data-step="13" data-intro="Share!!" data-position="left">
+            <table>
+              <tbody><tr>
+                <td valign="middle"><a href="fts2014.html" target="_blank">Financial Tracking 2014</a></td>
+            </tr>
+            </tbody></table>
+        </div>
+		
         <div class="row" >
             <h1>
-               <a href="http://pakcricketjo.com">
-               <img src="images/logo.png" style="height: 70; width: 150"></a>
-               <strong>Player Statistics - 2015</strong>
+               <a href="http://data.unhcr.org/jordan"><img src="images/coordination.png" style="height: 48px; width: 48px"></a>
+               <strong>Jordan Inter-Agency Financial Tracking - 2015</strong>
             </h1>
                 This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
                 For more information, see <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  http://www.jrpsc.org/financial-tracking/ </a>.
@@ -82,7 +93,20 @@
 
               <div class="row">
                 <center>
-                 
+                   <table width=100% cellspacing=1 cellpadding=1>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><img src="images/basicassistance.svg" alt="Basic Needs" height="30px" width="30px"></td>
+                            <td><img src="images/education.svg" alt="Education" height="30px" width="30px"></td>
+                            <td><img src="images/foodsecurity.svg" alt="Food Security" height="30px" width="30px"></td>
+                            <td><img src="images/health.svg" alt="Health" height="30px" width="30px"></td>
+                            <td><img src="images/protection.svg" alt="Protection" height="30px" width="30px"></td>
+                            <td><img src="images/shelter.svg" alt="Shelter" height="30px" width="30px"></td>
+                            <td><img src="images/wash.svg" alt="WASH" height="30px" width="30px"></td>
+                            <td></td>
+                        </tr>
+                    </table>
                 </center> 
                 <br>
               </div>
@@ -106,7 +130,14 @@
             Produced by Information Management Unit, UNHCR, Jordan. For more information please contact <a href="http://data.unhcr.org/jordan/team.html" target="_blank" >our team</a> </font>
          </span> &nbsp;&nbsp;&nbsp;
     </div>
-$('#dashboard').hide();
+
+    <script type="text/javascript" src="js/d3_002.js"></script>
+    <script type="text/javascript" src="js/crossfilter.js"></script>
+    <script type="text/javascript" src="js/dc.js"></script>
+    <script type="text/javascript" src="js/d3.tip.min.js"></script>
+    <script>
+
+        $('#dashboard').hide();
       //  var gap_chart = dc.pieChart("#gap");
         var sector_chart = dc.rowChart("#sector");
         var quarter_chart = dc.rowChart("#quarter");
@@ -115,7 +146,7 @@ $('#dashboard').hide();
         var gapReceived_chart = dc.barChart("#gapReceived");
 
 
-        d3.csv("stats/fts.csv", function(csv_data){
+        d3.csv("data/fts.csv", function(csv_data){
             var numberFormat = d3.format(",f");
             var cf = crossfilter(csv_data);
             var all = cf.groupAll();
@@ -335,6 +366,7 @@ $('#dashboard').hide();
         } catch( err ) {}
         </script><noscript><p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
       <!-- End Piwik Tracking Code -->
+
 
   </body>
 </html>
