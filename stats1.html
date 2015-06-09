@@ -10,9 +10,7 @@
     <title>Player Statistics - 2015 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
-
-    <link rel="stylesheet" href="css/bootswatch.min.css">
+       <link rel="stylesheet" href="css/bootswatch.min.css">
     <link rel="stylesheet" href="css/font-humanitarian.css">
 
     <link rel="stylesheet" type="text/css" href="css/dc.css"/>
@@ -127,16 +125,13 @@
     <script type="text/javascript" src="js/dc.js"></script>
     <script type="text/javascript" src="js/d3.tip.min.js"></script>
     <script>
-
         $('#dashboard').hide();
       //  var gap_chart = dc.pieChart("#gap");
-        var sector_chart = dc.rowChart("#player");
-        var quarter_chart = dc.rowChart("#runs");
-        var partner_chart = dc.rowChart("#wickets");
-        var partnergap_chart = dc.rowChart("#overs");
-        var gapReceived_chart = dc.barChart("#runsdiff");
-
-
+        var sector_chart = dc.rowChart("#sector");
+        var quarter_chart = dc.rowChart("#quarter");
+        var partner_chart = dc.rowChart("#partner");
+        var partnergap_chart = dc.rowChart("#partnergap");
+        var gapReceived_chart = dc.barChart("#gapReceived");
         d3.csv("stats/stats.csv", function(csv_data){
             var numberFormat = d3.format(",f");
             var cf = crossfilter(csv_data);
@@ -146,19 +141,18 @@
             function getFiltersValues() {
                 var filters = [
                 //    { name: 'gap', value: gap_chart.filters()},
-                    { name: 'player', value: player_chart.filters()},
-                    { name: 'runs', value: runs_chart.filters()},
-                    { name: 'wickets', value: wickets_chart.filters()},
-                    { name: 'runscon', value: runscon_chart.filters()}
+                    { name: 'sector', value: sector_chart.filters()},
+                    { name: 'quarter', value: quarter_chart.filters()},
+                    { name: 'partner', value: partner_chart.filters()},
+                    { name: 'partner', value: partnergap_chart.filters()}
                     ];
-
                 var recursiveEncoded = $.param( filters );
                 location.hash = recursiveEncoded;
             }
             // Init chart filters
             function initFilters() {
                 // Get hash values
-                var parseHash = /^#player=([A-Za-z0-9,_\-\/\s]*)&status=([A-Za-z0-9,_\-\/\s]*)&org=([A-Za-z0-9,_\-\/\s]*)&map=([A-Za-z0-9,_\-\/\s]*)$/;
+                var parseHash = /^#sector=([A-Za-z0-9,_\-\/\s]*)&status=([A-Za-z0-9,_\-\/\s]*)&org=([A-Za-z0-9,_\-\/\s]*)&map=([A-Za-z0-9,_\-\/\s]*)$/;
                 var parsed = parseHash.exec(decodeURIComponent(location.hash));
                 function filter(chart, rank) {  // for instance chart = sector_chart and rank in URL hash = 1
                     // sector chart
@@ -173,39 +167,33 @@
                     }
                 }
                 if (parsed) {
-                    filter(player_chart, 1);
-                    filter(runs_chart, 2);
-                    filter(wickets_chart, 3);
-                    filter(runscon_chart, 4);
+                    filter(sector_chart, 1);
+                    filter(quarter_chart, 2);
+                    filter(partner_chart, 3);
+                    filter(partnergap_chart, 4);
                 //    filter(gap_chart, 5);
-
                 }
             }
-
             // tooltips for row chart
             var rowTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " runs"; });
-
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " USD"; });
             // tooltips for pie chart
             var pieTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " runs"; });
-
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " USD"; });
             // tooltips for bar chart
             var barTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " runs";});
-
-
-            cf.player = cf.dimension(function(d) { return d.Player; });
-            var quarterByTotal = cf.player.group().reduceSum(function (d) { return d.RunsScored; });
-            var quarter = cf.player.group();
-            player_chart.width(250).height(200)
-                .dimension(cf.player)
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " USD";});
+            cf.quarter = cf.dimension(function(d) { return d.Quarter; });
+            var quarterByTotal = cf.quarter.group().reduceSum(function (d) { return d.Receive; });
+            var quarter = cf.quarter.group();
+            quarter_chart.width(250).height(200)
+                .dimension(cf.quarter)
                 .group(quarterByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
@@ -214,13 +202,11 @@
                 .colorDomain([0,0])
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
-
-
-            cf.runs = cf.dimension(function(d) { return d.RunsScored; });
-            var sectorByTotal = cf.runs.group().reduceSum(function (d) { return d.RunsScored; });
-            var sector = cf.runs.group();
-            runs_chart.width(250).height(210)
-                .dimension(cf.runs)
+            cf.sector = cf.dimension(function(d) { return d.Sector; });
+            var sectorByTotal = cf.sector.group().reduceSum(function (d) { return d.Receive; });
+            var sector = cf.sector.group();
+            sector_chart.width(250).height(210)
+                .dimension(cf.sector)
                 .group(sectorByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
@@ -229,13 +215,11 @@
                 .colorDomain([0,0])
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
-
-
-            cf.wickets = cf.dimension(function(d) { return d.Wickets; });
-            var partnerByTotal = cf.wickets.group().reduceSum(function (d) { return d.Wickets; });
-            var partner = cf.wickets.group();
+            cf.partner = cf.dimension(function(d) { return d.Partner; });
+            var partnerByTotal = cf.partner.group().reduceSum(function (d) { return d.Receive; });
+            var partner = cf.partner.group();
             partner_chart.width(250).height(500)
-                .dimension(cf.wickets)
+                .dimension(cf.partner)
                 .group(partnerByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
@@ -244,12 +228,11 @@
                 .colorDomain([0,0])
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
-
-            cf.runscon = cf.dimension(function(d) { return d.RunsConceded; });
-            var partnergapByTotal = cf.runscon.group().reduceSum(function (d) { return (d.RunsConceded); });
-            var partnergap = cf.runscon.group();
+            cf.partnergap = cf.dimension(function(d) { return d.Partner; });
+            var partnergapByTotal = cf.partner.group().reduceSum(function (d) { return (d.Gap); });
+            var partnergap = cf.partnergap.group();
             partnergap_chart.width(250).height(500)
-                .dimension(cf.runscon)
+                .dimension(cf.partnergap)
                 .group(partnergapByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
@@ -258,8 +241,6 @@
                 .colorDomain([0,0])
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
-
-
             cf.sectorGroup = cf.dimension(function(d) { return d.Sector; });
             cf.gapReceived = cf.dimension(function(d) { return d.Receive; });
             var gapByTotal = cf.sectorGroup.group().reduceSum(function (d) { return (d.Gap); });
@@ -295,29 +276,24 @@
                 .brushOn(false)
                 .renderlet(colorRenderlet)
                 .legend(dc.legend().x(375).y(10).itemHeight(15).gap(1));
-
             dc.dataCount("#count-info")
                 .dimension(cf)
                 .group(all);
-
             var byRequired = cf.dimension(function(d) { return d.Required; });
             var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Required; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
-
             var byReceived = cf.dimension(function(d) { return d.Receive; });
             var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Receive; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
                     .group(byReceivedGroup);
-
             var byGap = cf.dimension(function(d) { return d.Gap; });
             var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Gap; });
             dc.numberDisplay("#totalgap")
                    .valueAccessor(function(d){return +d})
                     .group(byGapGroup);
-
           // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
           // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
             var byPercentage = cf.dimension(function (d) { return (d.Gap / d.Required);});
@@ -325,23 +301,17 @@
             dc.numberDisplay("#totalpercentage")
                    .valueAccessor(function(d){return +d})
                     .group(byPercentageGroup);
-
-
             $('#loading').hide();
             $('#dashboard').show();
             dc.renderAll();
-
             /* Customised infobox */
             d3.selectAll("g.row").call(rowTip);
             d3.selectAll("g.row").on('mouseover', rowTip.show).on('mouseout', rowTip.hide);
-
             var stackChart = 'div#gapReceived.dc-chart rect';
             d3.selectAll(stackChart).call(barTip);
             d3.selectAll(stackChart).on('mouseover', barTip.show).on('mouseout', barTip.hide);
-
             }
             );
-
     </script>
     <script src="js/bootstrap.js"></script>
 
@@ -355,8 +325,7 @@
         piwikTracker.trackPageView();
         piwikTracker.enableLinkTracking();
         } catch( err ) {}
-        </script><noscript>
-    <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
+        </script><noscript><p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
       <!-- End Piwik Tracking Code -->
 
 
