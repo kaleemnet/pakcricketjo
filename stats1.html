@@ -24,14 +24,14 @@ d3.csv("stats/stats.csv", function(error, experiments) {
 
   var ndx                 = crossfilter(experiments),
       runDimension        = ndx.dimension(function(d) {return +d.Player;}),
-      speedSumGroup       = runDimension.group().reduceSum(function(d) {return d.Runs * d.Run / 1000;});
+      speedSumGroup       = runDimension.group().reduceSum(function(d) {return d.Runs * d.Player / 1000;});
 
   chart
     .width(768)
     .height(480)
     .x(d3.scale.linear().domain([6,20]))
     .brushOn(false)
-    .yAxisLabel("This is the Y Axis!")
+    .yAxisLabel("Runs")
     .dimension(runDimension)
     .group(speedSumGroup)
     .on('renderlet', function(chart) {
