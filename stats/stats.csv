@@ -1,4 +1,4 @@
-Date,MatchType,Partner,Receive,6s,4s,50s,100s,Overs,Gap,Wickets,Wides,NoBalls,Catches
+Date,MatchType,Player,Runs,6s,4s,50s,100s,Overs,Conceded,Wickets,Wides,NoBalls,Catches
 29/05/2015,Domestic,Khalid,0,0,0,0,0,2,8,1,0,0,0
 29/05/2015,Domestic,Mahjoob,23,0,1,0,0,0,0,0,0,0,0
 29/05/2015,Domestic,Shakir,72,5,8,1,0,4,46,1,9,1,1
