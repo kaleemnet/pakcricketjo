@@ -24,7 +24,7 @@ d3.csv("stats/stats.csv", function(error, experiments) {
 
   var ndx                 = crossfilter(experiments),
       runDimension        = ndx.dimension(function(d) {return +d.Player;}),
-      speedSumGroup       = runDimension.group().reduceSum(function(d) {return d.Runs * d.Player / 1000;});
+      speedSumGroup       = runDimension.group().reduceSum(function(d) {return d.Runs;});
 
   chart
     .width(768)
