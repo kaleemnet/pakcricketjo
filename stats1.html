@@ -115,7 +115,7 @@ $('#dashboard').hide();
         var gapReceived_chart = dc.barChart("#gapReceived");
 
 
-        d3.csv("data/fts.csv", function(csv_data){
+        d3.csv("stats/fts.csv", function(csv_data){
             var numberFormat = d3.format(",f");
             var cf = crossfilter(csv_data);
             var all = cf.groupAll();
