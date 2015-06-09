@@ -15,31 +15,23 @@
 <script type="text/javascript" src="JS/dc.js"></script>
 <script type="text/javascript">
 
-var chart = dc.barChart("#test");
+var chart = dc.pieChart("#test");
 d3.csv("stats/stats.csv", function(error, experiments) {
 
-  experiments.forEach(function(x) {
-    x.Runs = +x.Runs;
-  });
-
-  var ndx                 = crossfilter(experiments),
-      runDimension        = ndx.dimension(function(d) {return +d.Player;}),
-      speedSumGroup       = runDimension.group().reduceSum(function(d) {return d.Runs;});
+  var ndx           = crossfilter(experiments),
+      runDimension  = ndx.dimension(function(d) {return "run-"+d.Player;})
+      speedSumGroup = runDimension.group().reduceSum(function(d) {return d.Runs * d.Player;});
 
   chart
     .width(768)
     .height(480)
-    .x(d3.scale.linear().domain([6,20]))
-    .brushOn(false)
-    .yAxisLabel("Runs")
+    .slicesCap(4)
+    .innerRadius(100)
     .dimension(runDimension)
     .group(speedSumGroup)
-    .on('renderlet', function(chart) {
-        chart.selectAll('rect').on("click", function(d) {
-            console.log("click!", d);
-        });
-    });
-    chart.render();
+    .legend(dc.legend());
+
+  chart.render();
 });
 
 </script>
