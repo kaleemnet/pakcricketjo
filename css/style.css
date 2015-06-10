@@ -125,7 +125,7 @@ h3{
 .logo{
 	float:left;
 	width:300px;
-	padding-top:30px;
+	padding-top:15px;
 }
 h1{
 	margin:0;
@@ -135,15 +135,15 @@ h1{
 	overflow:hidden
 }
 h1 a{
-	height:110px;
+	height:90px;
 	padding-left:208px;
 	display:block;
 }
 .menues{
 	float:right;
 	width:700px;
-	padding-top:60px;
-	height:68px;
+	padding-top:45px;
+	height:32px;
 	text-align:right;
 	position:relative;
 }
@@ -158,8 +158,8 @@ ul.smalllinks{
 	font-size:12px;
 	list-style:none;
 	position:absolute;
-	top:64px;
-	right:150px;
+	top:15px;
+	right:0px;
 	margin:0;
 	padding:0;
 	color:#ccc;
@@ -287,18 +287,18 @@ ul.mainlinks > li ul li {
 }
 .holder ul li{
 	width: 1000px;
-	height:270px;
-	padding-top:53px;
+	height:330px;
+	padding-top:13px;
 }
 .slideleft{
 	float:left;
 	width:530px;
-	height:270px;
+	height:320px;
 }
 .slideright{
 	float:right;
 	width:470px;
-	height:270px;
+	height:300px;
 	position:relative;
 }
 .slideright h2{
@@ -317,7 +317,7 @@ ul.mainlinks > li ul li {
 	background:#f1f1f1;
 	padding:15px;
 	width:470px;
-	height:210px;
+	height:270px;
 	display:block;
 }
 .slideleft em img{
@@ -344,7 +344,7 @@ ul.mainlinks > li ul li {
 .slideright span a{
 	display:block;
 	width:118px;
-	height:22px;
+	height:122px;
 	padding:8px 0 0 40px;
 	font-family:MuseoBold, Arial, Helvetica, sans-serif;
 	font-weight:bold;
