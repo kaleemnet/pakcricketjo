@@ -26,6 +26,7 @@
     <script src="js/jquery.js"></script>
     <!-- map the data to the GeoJSON object -->
     <script src="js/data-jo.js"></script>
+    <link href="http://www.unhcr.org/favicon.ico" rel="icon" type="image/x-icon">
     <!-- hide and display Disclaimer -->
     <script>
         function show(shown, hidden) {
@@ -45,24 +46,23 @@
         <div class="socialmedia" data-step="13" data-intro="Share!!" data-position="left" style="width: 146; height: 19">
             <table>
               <tbody><tr>
-                            </tr>
+                <td valign="middle">&nbsp;</td>
+            </tr>
             </tbody></table>
         </div>
 		
         <div class="row" >
             <h1>
                <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 48px; width: 88px"></a>
-               <strong>Pakistan Cricket Jordan Player Stats - 2015</strong>
+               <strong>Pakistan Cricket Jordan Player Statistics - 2015</strong>
             </h1>
                 This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
                 For more information, see <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  http://www.jrpsc.org/financial-tracking/ </a>.
                 You can also consult the <a href="index1.html" target="_blank"> bubble chart version</a>.<br>
             <h2>
-            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
-            <a class="btn btn-default">6s <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
-            <a class="btn btn-default">4s <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
-            <a class="btn btn-default">Wickets <a  class="btn btn-danger"><span id="totalwickets" class="number-display"></span></a></a>
-
+            <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Scored <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -198,19 +198,19 @@
             var rowTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value); });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " Wickets"; });
 
             // tooltips for pie chart
             var pieTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value); });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " Runs"; });
 
             // tooltips for bar chart
             var barTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " Runs";});
 
 
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
@@ -312,29 +312,23 @@
                 .dimension(cf)
                 .group(all);
 
-            var byRequired = cf.dimension(function(d) { return d.Receive; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Receive; });
+            var byRequired = cf.dimension(function(d) { return d.Required; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Required; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.6s; });
-            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.6s; });
+            var byReceived = cf.dimension(function(d) { return d.Receive; });
+            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Receive; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
                     .group(byReceivedGroup);
 
-            var byGap = cf.dimension(function(d) { return d.4s; });
-            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.4s; });
+            var byGap = cf.dimension(function(d) { return d.Gap; });
+            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Gap; });
             dc.numberDisplay("#totalgap")
                    .valueAccessor(function(d){return +d})
                     .group(byGapGroup);
-
-            var byWickets = cf.dimension(function(d) { return d.Wickets; });
-            var byWicketsGroup = byWickets.groupAll().reduceSum(function (d) { return d.Wickets; });
-            dc.numberDisplay("#totalwickets")
-                   .valueAccessor(function(d){return +d})
-                    .group(byWicketsGroup);
 
           // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
           // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
