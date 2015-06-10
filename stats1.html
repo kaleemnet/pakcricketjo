@@ -46,8 +46,7 @@
         <div class="socialmedia" data-step="13" data-intro="Share!!" data-position="left" style="width: 146; height: 19">
             <table>
               <tbody><tr>
-                <td valign="middle"><a href="fts2014.html" target="_blank">
-                Financial Tracking 2014</a></td>
+               
             </tr>
             </tbody></table>
         </div>
@@ -199,19 +198,19 @@
             var rowTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " Wickets"; });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value); });
 
             // tooltips for pie chart
             var pieTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " Runs"; });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value); });
 
             // tooltips for bar chart
             var barTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " Runs";});
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
