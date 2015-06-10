@@ -61,8 +61,8 @@
                 You can also consult the <a href="index1.html" target="_blank"> bubble chart version</a>.<br>
             <h2>
             <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary">$ <span id="totalrequired" class="number-display"></span></a></a>
-            <a class="btn btn-default">Funds Received (USD) <a  class="btn btn-info">$ <span id="totalreceived" class="number-display"></span></a></a>
-            <a class="btn btn-default">Not yet funded (USD) <a  class="btn btn-warning">$ <span id="totalgap" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Scored <a  class="btn btn-info">$ <span id="totalreceived" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning">$ <span id="totalgap" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -80,7 +80,7 @@
 
                 <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
 
-                <div id="quarter"> <center> <h4>Quarters</h4> </center></div>
+                <div id="quarter"> <center> <h4>Match Type</h4> </center></div>
                 </div>
                 <div id="sector" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
                   <center> <h4>Received funds across Sectors</h4> </center>
@@ -116,10 +116,10 @@
             <div class="col-md-6">
               <div class="row">
                 <div id="partner" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
-                  <center> <h4>Received funds per Agency</h4> </center>
+                  <center> <h4>Runs Scored by Player</h4> </center>
                 </div>
                 <div id="partnergap" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by sector." data-position='right'>
-                  <center> <h4>Funding gap per Agency</h4> </center>
+                  <center> <h4>Runs Conceded by Player</h4> </center>
                 </div>
               </div>
             </div>
@@ -196,19 +196,19 @@
             var rowTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " USD"; });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " Runs"; });
 
             // tooltips for pie chart
             var pieTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " USD"; });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " Runs"; });
 
             // tooltips for bar chart
             var barTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " USD";});
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " Runs";});
 
 
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
@@ -227,7 +227,7 @@
 
 
             cf.sector = cf.dimension(function(d) { return d.Sector; });
-            var sectorByTotal = cf.sector.group().reduceSum(function (d) { return d.Receive; });
+            var sectorByTotal = cf.sector.group().reduceSum(function (d) { return d.Wickets; });
             var sector = cf.sector.group();
             sector_chart.width(250).height(210)
                 .dimension(cf.sector)
