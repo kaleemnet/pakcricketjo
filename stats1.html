@@ -64,6 +64,7 @@
             <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Runs Scored <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning"><span id="totalwickets" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -199,19 +200,19 @@
             var rowTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value)});
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " Wickets"; });
 
             // tooltips for pie chart
             var pieTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value)});
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " Runs"; });
 
             // tooltips for bar chart
             var barTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " Runs";});
 
 
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
@@ -313,23 +314,30 @@
                 .dimension(cf)
                 .group(all);
 
-            var byRequired = cf.dimension(function(d) { return d.Required; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Required; });
+            var byRequired = cf.dimension(function(d) { return d.Recieve; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Recieve; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.Receive; });
-            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Receive; });
+            var byReceived = cf.dimension(function(d) { return d.6s; });
+            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.6s; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
                     .group(byReceivedGroup);
 
-            var byGap = cf.dimension(function(d) { return d.Gap; });
-            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Gap; });
+            var byGap = cf.dimension(function(d) { return d.4s; });
+            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.4s; });
             dc.numberDisplay("#totalgap")
                    .valueAccessor(function(d){return +d})
                     .group(byGapGroup);
+
+ 			var byWickets = cf.dimension(function(d) { return d.Wickets; });
+            var byWicketsGroup = byWickets.groupAll().reduceSum(function (d) { return d.Wickets; });
+            dc.numberDisplay("#totalwickets")
+                   .valueAccessor(function(d){return +d})
+                    .group(byWicketsGroup);
+
 
           // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
           // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
@@ -340,12 +348,38 @@
                     .group(byPercentageGroup);
 
 
-         
+            $('#loading').hide();
+            $('#dashboard').show();
+            dc.renderAll();
+
+            /* Customised infobox */
+            d3.selectAll("g.row").call(rowTip);
+            d3.selectAll("g.row").on('mouseover', rowTip.show).on('mouseout', rowTip.hide);
+
+            var stackChart = 'div#gapReceived.dc-chart rect';
+            d3.selectAll(stackChart).call(barTip);
+            d3.selectAll(stackChart).on('mouseover', barTip.show).on('mouseout', barTip.hide);
 
             }
             );
 
     </script>
-    
+    <script src="js/bootstrap.js"></script>
+
+      <!-- Piwik -->
+        <script type="text/javascript">
+        var pkBaseURL = (("https:" == document.location.protocol) ? "https://data.unhcr.org/piwik/" : "http://data.unhcr.org/piwik/");
+        document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+        </script><script type="text/javascript">
+        try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
+        piwikTracker.trackPageView();
+        piwikTracker.enableLinkTracking();
+        } catch( err ) {}
+        </script><noscript>
+    <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
+      <!-- End Piwik Tracking Code -->
+
+
   </body>
 </html>
