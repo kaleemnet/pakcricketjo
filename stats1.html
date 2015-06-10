@@ -322,14 +322,14 @@
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.6s; });
-            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.6s; });
+            var byReceived = cf.dimension(function(d) { return d.Sixes; });
+            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Sixes; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
                     .group(byReceivedGroup);
 
-            var byGap = cf.dimension(function(d) { return d.4s; });
-            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.4s; });
+            var byGap = cf.dimension(function(d) { return d.Fours; });
+            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Fours; });
             dc.numberDisplay("#totalgap")
                    .valueAccessor(function(d){return +d})
                     .group(byGapGroup);
