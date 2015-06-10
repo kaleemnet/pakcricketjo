@@ -55,7 +55,7 @@
         <div class="row" >
             <h1>
                <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 68px; width: 158px"></a>
-               <strong>Jordan Inter-Agency Financial Tracking - 2015</strong>
+               <strong>Pakistan Cricket Jordan Player Stats - 2015</strong>
             </h1>
                 This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
                 For more information, see <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  http://www.jrpsc.org/financial-tracking/ </a>.
@@ -340,17 +340,7 @@
                     .group(byPercentageGroup);
 
 
-            $('#loading').hide();
-            $('#dashboard').show();
-            dc.renderAll();
-
-            /* Customised infobox */
-            d3.selectAll("g.row").call(rowTip);
-            d3.selectAll("g.row").on('mouseover', rowTip.show).on('mouseout', rowTip.hide);
-
-            var stackChart = 'div#gapReceived.dc-chart rect';
-            d3.selectAll(stackChart).call(barTip);
-            d3.selectAll(stackChart).on('mouseover', barTip.show).on('mouseout', barTip.hide);
+         
 
             }
             );
