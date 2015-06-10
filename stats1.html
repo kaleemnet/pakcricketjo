@@ -220,7 +220,7 @@
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
             var quarterByTotal = cf.quarter.group().reduceSum(function (d) { return d.Receive; });
             var quarter = cf.quarter.group();
-            quarter_chart.width(250).height(200)
+            quarter_chart.width(250).height(50)
                 .dimension(cf.quarter)
                 .group(quarterByTotal)
                 .elasticX(true)
@@ -235,7 +235,7 @@
             cf.sector = cf.dimension(function(d) { return d.Partner; });
             var sectorByTotal = cf.sector.group().reduceSum(function (d) { return d.Wickets; });
             var sector = cf.sector.group();
-            sector_chart.width(250).height(210)
+            sector_chart.width(250).height(500)
                 .dimension(cf.sector)
                 .group(sectorByTotal)
                 .elasticX(true)
