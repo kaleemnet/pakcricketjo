@@ -54,7 +54,7 @@
 		
         <div class="row" >
             <h1>
-               <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 48px; width: 48px"></a>
+               <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 68px; width: 158px"></a>
                <strong>Jordan Inter-Agency Financial Tracking - 2015</strong>
             </h1>
                 This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
@@ -199,19 +199,19 @@
             var rowTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value) + " Wickets"; });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.key + "</span> : "  + numberFormat(d.value)});
 
             // tooltips for pie chart
             var pieTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value) + " Runs"; });
+                  .html(function (d) { return "<span style='color: #f0027f'>" +  d.data.key + "</span> : "  + numberFormat(d.value)});
 
             // tooltips for bar chart
             var barTip = d3.tip()
                   .attr('class', 'd3-tip')
                   .offset([-10, 0])
-                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y) + " Runs";});
+                  .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
@@ -356,22 +356,6 @@
             );
 
     </script>
-    <script src="js/bootstrap.js"></script>
-
-      <!-- Piwik -->
-        <script type="text/javascript">
-        var pkBaseURL = (("https:" == document.location.protocol) ? "https://data.unhcr.org/piwik/" : "http://data.unhcr.org/piwik/");
-        document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-        </script><script type="text/javascript">
-        try {
-        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
-        piwikTracker.trackPageView();
-        piwikTracker.enableLinkTracking();
-        } catch( err ) {}
-        </script><noscript>
-    <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
-      <!-- End Piwik Tracking Code -->
-
-
+    
   </body>
 </html>
