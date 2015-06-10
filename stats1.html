@@ -6,9 +6,9 @@
 <meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
 <meta property="og:title" content="Jordan Inter-Agency Financial Tracking - 2015"/>
 <meta property="og:type" content="article"/>
-<meta property="og:site_name" content="Jordan Inter-Agency Financial Tracking - 2015"/>
-<meta property="og:description" content="Jordan Inter-Agency Financial Tracking - 2015"/>
-    <title>Jordan Inter-Agency Financial Tracking - 2015 </title>
+<meta property="og:site_name" content="Pakistan Cricket Jordan Player Stats - 2015"/>
+<meta property="og:description" content="Pakistan Cricket Jordan Player Stats - 2015"/>
+    <title>Pakistan Cricket Jordan Player Stats - 2015 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
@@ -53,16 +53,16 @@
 		
         <div class="row" >
             <h1>
-               <a href="http://data.unhcr.org/jordan"><img src="images/coordination.png" style="height: 48px; width: 48px"></a>
+               <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 48px; width: 48px"></a>
                <strong>Jordan Inter-Agency Financial Tracking - 2015</strong>
             </h1>
                 This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
                 For more information, see <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  http://www.jrpsc.org/financial-tracking/ </a>.
                 You can also consult the <a href="index1.html" target="_blank"> bubble chart version</a>.<br>
             <h2>
-            <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary">$ <span id="totalrequired" class="number-display"></span></a></a>
-            <a class="btn btn-default">Runs Scored <a  class="btn btn-info">$ <span id="totalreceived" class="number-display"></span></a></a>
-            <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning">$ <span id="totalgap" class="number-display"></span></a></a>
+            <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Scored <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -226,7 +226,7 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
 
-            cf.sector = cf.dimension(function(d) { return d.Sector; });
+            cf.sector = cf.dimension(function(d) { return d.Partner; });
             var sectorByTotal = cf.sector.group().reduceSum(function (d) { return d.Wickets; });
             var sector = cf.sector.group();
             sector_chart.width(250).height(210)
