@@ -316,20 +316,20 @@
                 .dimension(cf)
                 .group(all);
 
-            var byRequired = cf.dimension(function(d) { return d.Required; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Required; });
+            var byRequired = cf.dimension(function(d) { return d.Receive; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Receive; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.Receive; });
-            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Receive; });
+            var byReceived = cf.dimension(function(d) { return d.6s; });
+            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.6s; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
                     .group(byReceivedGroup);
 
-            var byGap = cf.dimension(function(d) { return d.Gap; });
-            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Gap; });
+            var byGap = cf.dimension(function(d) { return d.4s; });
+            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.4s; });
             dc.numberDisplay("#totalgap")
                    .valueAccessor(function(d){return +d})
                     .group(byGapGroup);
