@@ -220,7 +220,7 @@
             cf.quarter = cf.dimension(function(d) { return d.Quarter; });
             var quarterByTotal = cf.quarter.group().reduceSum(function (d) { return d.Receive; });
             var quarter = cf.quarter.group();
-            quarter_chart.width(250).height(50)
+            quarter_chart.width(250).height(150)
                 .dimension(cf.quarter)
                 .group(quarterByTotal)
                 .elasticX(true)
