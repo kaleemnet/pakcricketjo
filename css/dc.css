@@ -1,4 +1,4 @@
-div.dc-chart {
+<pre style="color: rgb(0, 0, 0); font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: 1; word-spacing: 0px; -webkit-text-stroke-width: 0px; word-wrap: break-word; white-space: pre-wrap;">div.dc-chart {
     float: left;
 }
 
@@ -314,4 +314,4 @@ div.dc-chart {
 .dc-chart .heatmap g.axis text {
     pointer-events: all;
     cursor: pointer;
-}
+}</pre>
