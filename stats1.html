@@ -63,12 +63,9 @@
                 You can also consult the </font> <a href="index1.html" target="_blank"> 
             <font color="#FFFFFF">bubble chart version</font></a><font color="#FFFFFF">.</font><br>
             <h2>
-            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
-            <a class="btn btn-default">6s <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
-            <a class="btn btn-default">4s <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
-            <a class="btn btn-default">Runs Conceded <a  class="btn btn-danger"><span id="totalwickets" class="number-display"></span></a></a>
-
-           
+            <a class="btn btn-default">Total Requested (USD) <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Scored <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
+            <a class="btn btn-default">Runs Conceded <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -318,32 +315,23 @@
                 .dimension(cf)
                 .group(all);
 
-            var byRequired = cf.dimension(function(d) { return d.Receive; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Receive; });
+            var byRequired = cf.dimension(function(d) { return d.Required; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Required; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.6s; });
-            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.6s; });
+            var byReceived = cf.dimension(function(d) { return d.Receive; });
+            var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Receive; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
                     .group(byReceivedGroup);
 
-            var byGap = cf.dimension(function(d) { return d.4s; });
-            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.4s; });
+            var byGap = cf.dimension(function(d) { return d.Gap; });
+            var byGapGroup = byGap.groupAll().reduceSum(function (d) { return d.Gap; });
             dc.numberDisplay("#totalgap")
                    .valueAccessor(function(d){return +d})
                     .group(byGapGroup);
-
-			var byWickets = cf.dimension(function(d) { return d.Wickets; });
-            var byWicketsGroup = byWickets.groupAll().reduceSum(function (d) { return d.Wickets; });
-            dc.numberDisplay("#totalwickets")
-                   .valueAccessor(function(d){return +d})
-                    .group(byWicketsGroup);
-
-
-
 
           // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
           // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
