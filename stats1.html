@@ -56,7 +56,7 @@
                <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 48px; width: 88px"></a>
                <strong>Pakistan Cricket Jordan Player Statistics - 2015</strong>
             </h1>
-                <font color="#FFFFFF">This Financial Tracking System (FTS) is based on funds received by refugee response partners in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
+                <font color="#FFFFFF">This Financial Tracking System (FTS) is based on funds received by refugee response runsscoreds in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
                 For more information, see </font> <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  
             <font color="#FFFFFF">http://www.jrpsc.org/financial-tracking/
             </font> </a><font color="#FFFFFF">.
@@ -84,7 +84,7 @@
 
                 <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
 
-                <div id="quarter"> <center> <h4>Match Type</h4> </center></div>
+                <div id="matchtype"> <center> <h4>Match Type</h4> </center></div>
                 </div>
                  <div id="wickets" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Wickets Taken by Player</h4> </center>
@@ -120,10 +120,10 @@
             </div>
             <div class="col-md-6">
               <div class="row">
-                              <div id="partner" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+                              <div id="runsscored" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Runs Scored by Player</h4> </center>
                 </div>
-                <div id="partnergap" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+                <div id="runsconceded" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Runs Conceded by Player</h4> </center>
                 </div>
               </div>
@@ -146,9 +146,9 @@
         $('#dashboard').hide();
       //  var gap_chart = dc.pieChart("#gap");
         var wickets_chart = dc.rowChart("#wickets");
-        var quarter_chart = dc.rowChart("#quarter");
-        var partner_chart = dc.rowChart("#partner");
-        var partnergap_chart = dc.rowChart("#partnergap");
+        var matchtype_chart = dc.rowChart("#matchtype");
+        var runsscored_chart = dc.rowChart("#runsscored");
+        var runsconceded_chart = dc.rowChart("#runsconceded");
         var gapReceived_chart = dc.barChart("#gapReceived");
 
 
@@ -162,9 +162,9 @@
                 var filters = [
                 //    { name: 'gap', value: gap_chart.filters()},
                     { name: 'wickets', value: wickets_chart.filters()},
-                    { name: 'quarter', value: quarter_chart.filters()},
-                    { name: 'partner', value: partner_chart.filters()},
-                    { name: 'partner', value: partnergap_chart.filters()}
+                    { name: 'matchtype', value: matchtype_chart.filters()},
+                    { name: 'runsscored', value: runsscored_chart.filters()},
+                    { name: 'runsscored', value: runsconceded_chart.filters()}
                     ];
 
                 var recursiveEncoded = $.param( filters );
@@ -189,9 +189,9 @@
                 }
                 if (parsed) {
                     filter(wickets_chart, 1);
-                    filter(quarter_chart, 2);
-                    filter(partner_chart, 3);
-                    filter(partnergap_chart, 4);
+                    filter(matchtype_chart, 2);
+                    filter(runsscored_chart, 3);
+                    filter(runsconceded_chart, 4);
                 //    filter(gap_chart, 5);
 
                 }
@@ -216,12 +216,12 @@
                   .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
-            cf.quarter = cf.dimension(function(d) { return d.Quarter; });
-            var quarterByTotal = cf.quarter.group().reduceSum(function (d) { return d.Receive; });
-            var quarter = cf.quarter.group();
-            quarter_chart.width(250).height(150)
-                .dimension(cf.quarter)
-                .group(quarterByTotal)
+            cf.matchtype = cf.dimension(function(d) { return d.Quarter; });
+            var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d) { return d.Receive; });
+            var matchtype = cf.matchtype.group();
+            matchtype_chart.width(250).height(150)
+                .dimension(cf.matchtype)
+                .group(matchtypeByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(4); })
@@ -246,12 +246,12 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
 
-            cf.partner = cf.dimension(function(d) { return d.Partner; });
-            var partnerByTotal = cf.partner.group().reduceSum(function (d) { return d.Receive; });
-            var partner = cf.partner.group();
-            partner_chart.width(250).height(500)
-                .dimension(cf.partner)
-                .group(partnerByTotal)
+            cf.runsscored = cf.dimension(function(d) { return d.Partner; });
+            var runsscoredByTotal = cf.runsscored.group().reduceSum(function (d) { return d.Receive; });
+            var runsscored = cf.runsscored.group();
+            runsscored_chart.width(250).height(500)
+                .dimension(cf.runsscored)
+                .group(runsscoredByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(20); })
@@ -260,12 +260,12 @@
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
-            cf.partnergap = cf.dimension(function(d) { return d.Partner; });
-            var partnergapByTotal = cf.partner.group().reduceSum(function (d) { return (d.Gap); });
-            var partnergap = cf.partnergap.group();
-            partnergap_chart.width(250).height(500)
-                .dimension(cf.partnergap)
-                .group(partnergapByTotal)
+            cf.runsconceded = cf.dimension(function(d) { return d.Partner; });
+            var runsconcededByTotal = cf.runsscored.group().reduceSum(function (d) { return (d.Gap); });
+            var runsconceded = cf.runsconceded.group();
+            runsconceded_chart.width(250).height(500)
+                .dimension(cf.runsconceded)
+                .group(runsconcededByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(20); })
