@@ -56,17 +56,12 @@
                <a href="http://pakcricketjo.com"><img src="images/logo.png" style="height: 48px; width: 88px"></a>
                <strong>Pakistan Cricket Jordan Player Statistics - 2015</strong>
             </h1>
-                <font color="#FFFFFF">This Financial Tracking System (FTS) is based on funds received by refugee response runsscoreds in Jordan. It only covers the inter-agency appeal for the <b>refugee pillar</b> of the 3RP, in support of the Jordan Response Plan (JRP). The JRP FTS remains the authoritative source for funds pledged and allocated to the Jordan Resilience Plan (JRP) log-frame.
-                For more information, see </font> <a href="http://www.jrpsc.org/financial-tracking/" target="_blank">  
-            <font color="#FFFFFF">http://www.jrpsc.org/financial-tracking/
-            </font> </a><font color="#FFFFFF">.
-                You can also consult the </font> <a href="index1.html" target="_blank"> 
-            <font color="#FFFFFF">bubble chart version</font></a><font color="#FFFFFF">.</font><br>
+                <br>
             <h2>
             <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
-            <a class="btn btn-default">Fours <a  class="btn btn-warning"><span id="totalgap" class="number-display"></span></a></a>
-            <a class="btn btn-default">Wickets <a  class="btn btn-danger"><span id="totalwickets" class="number-display"></span></a></a>
+            <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
+            <a class="btn btn-default">Wickets <a  class="btn btn-warning"><span id="totalwickets" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -340,6 +335,7 @@
                    .valueAccessor(function(d){return +d})
                     .group(byWicketsGroup);
 
+			
           // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
           // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
             var byPercentage = cf.dimension(function (d) { return (d.Gap / d.Required);});
