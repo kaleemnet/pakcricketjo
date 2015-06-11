@@ -145,10 +145,10 @@
 
         $('#dashboard').hide();
       //  var gap_chart = dc.pieChart("#gap");
-        var sector_chart = dc.rowChart("#sector");
-        var quarter_chart = dc.rowChart("#quarter");
-        var partner_chart = dc.rowChart("#partner");
-        var partnergap_chart = dc.rowChart("#partnergap");
+        var sector_chart = dc.rowChart("#wickets");
+        var quarter_chart = dc.rowChart("#matchtype");
+        var partner_chart = dc.rowChart("#runsscored");
+        var partnergap_chart = dc.rowChart("#runsconceded");
         var gapReceived_chart = dc.barChart("#gapReceived");
 
 
@@ -161,10 +161,10 @@
             function getFiltersValues() {
                 var filters = [
                 //    { name: 'gap', value: gap_chart.filters()},
-                    { name: 'sector', value: sector_chart.filters()},
-                    { name: 'quarter', value: quarter_chart.filters()},
-                    { name: 'partner', value: partner_chart.filters()},
-                    { name: 'partner', value: partnergap_chart.filters()}
+                    { name: 'wickets', value: sector_chart.filters()},
+                    { name: 'matchtype', value: quarter_chart.filters()},
+                    { name: 'runsscored, value: partner_chart.filters()},
+                    { name: 'runsconceded', value: partnergap_chart.filters()}
                     ];
 
                 var recursiveEncoded = $.param( filters );
@@ -173,7 +173,7 @@
             // Init chart filters
             function initFilters() {
                 // Get hash values
-                var parseHash = /^#sector=([A-Za-z0-9,_\-\/\s]*)&status=([A-Za-z0-9,_\-\/\s]*)&org=([A-Za-z0-9,_\-\/\s]*)&map=([A-Za-z0-9,_\-\/\s]*)$/;
+                var parseHash = /^#wickets=([A-Za-z0-9,_\-\/\s]*)&status=([A-Za-z0-9,_\-\/\s]*)&org=([A-Za-z0-9,_\-\/\s]*)&map=([A-Za-z0-9,_\-\/\s]*)$/;
                 var parsed = parseHash.exec(decodeURIComponent(location.hash));
                 function filter(chart, rank) {  // for instance chart = sector_chart and rank in URL hash = 1
                     // sector chart
