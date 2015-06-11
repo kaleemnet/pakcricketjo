@@ -86,14 +86,11 @@
 
                 <div id="matchtype"> <center> <h4>Match Type</h4> </center></div>
                 </div>
-                 
-                 <div id="runsscored" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
-                  <center> <h4>Runs Scored by Player</h4> </center>
-                 
+                 <div id="wickets" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+                  <center> <h4>Wickets Taken by Player</h4> </center>
                 </div>
-                            <div class="row">
-              
-
+                 </div>
+              <div class="row">
                 <!--
 <div id="gapReceived" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Distribution of received funds/gap across Sectors</h4> </center>
@@ -123,16 +120,16 @@
             </div>
             <div class="col-md-6">
               <div class="row">
-              <div id="wickets" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
-                  <center> <h4>Wickets Taken by Player</h4> </center>
-                               </div>
+                              <div id="runsscored" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+                  <center> <h4>Runs Scored by Player</h4> </center>
+                </div>
                 <div id="runsconceded" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Runs Conceded by Player</h4> </center>
                 </div>
-                  <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
-                <div id="poptype"> <center> <h4>Extra/Cathes</h4> </center></div>
-                </div>
-                  </div>
+              </div>
+            </div>
+       </div>
+    </div>
 
     <div width="100%" style="background:#006CA9; height:25px" align=right>
         <span  class="demoTableRow"><font color="#FFFFFF">
@@ -152,7 +149,6 @@
         var matchtype_chart = dc.rowChart("#matchtype");
         var runsscored_chart = dc.rowChart("#runsscored");
         var runsconceded_chart = dc.rowChart("#runsconceded");
-        var poptype_chart = dc.pieChart("#poptype");
         var gapReceived_chart = dc.barChart("#gapReceived");
 
 
@@ -168,7 +164,6 @@
                     { name: 'wickets', value: wickets_chart.filters()},
                     { name: 'matchtype', value: matchtype_chart.filters()},
                     { name: 'runsscored', value: runsscored_chart.filters()},
-                    { name: 'poptype', value: poptype_chart.filters()},
                     { name: 'runsscored', value: runsconceded_chart.filters()}
                     ];
 
@@ -196,9 +191,8 @@
                     filter(wickets_chart, 1);
                     filter(matchtype_chart, 2);
                     filter(runsscored_chart, 3);
-                    filter(appeal_chart, 4);
-                    filter(runsconceded_chart, 5);
-                //    filter(gap_chart, 6);
+                    filter(runsconceded_chart, 4);
+                //    filter(gap_chart, 5);
 
                 }
             }
@@ -251,21 +245,6 @@
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
-			cf.poptype = cf.dimension(function(d) { return d.Extra; });
-                var poptype = cf.poptype.group();
-                var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
-                   poptype_chart.width(100).height(100)
-                       .dimension(cf.poptype)
-                       .group(poptypeByTotal)
-                       .innerRadius(10)
-                       .colors(['#8da0cb', /* boys */
-                               '#fc8d62', /* girls */
-                               '#e78ac3', /* men */
-                               ])
-                       .colorDomain([0,4])
-                       .renderLabel(true)
-                       .colorAccessor(function(d, i){return i%4;})
-                       .on("filtered", getFiltersValues);
 
             cf.runsscored = cf.dimension(function(d) { return d.Partner; });
             var runsscoredByTotal = cf.runsscored.group().reduceSum(function (d) { return d.Receive; });
@@ -384,21 +363,21 @@
             }
             );
 
-              </script>
+    </script>
     <script src="js/bootstrap.js"></script>
 
       <!-- Piwik -->
         <script type="text/javascript">
         var pkBaseURL = (("https:" == document.location.protocol) ? "https://data.unhcr.org/piwik/" : "http://data.unhcr.org/piwik/");
         document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-              </script><script type="text/javascript">
+        </script><script type="text/javascript">
         try {
         var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
         piwikTracker.trackPageView();
         piwikTracker.enableLinkTracking();
         } catch( err ) {}
-              </script><noscript>
-              <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
+        </script><noscript>
+    <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
       <!-- End Piwik Tracking Code -->
 
 
