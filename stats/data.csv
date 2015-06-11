@@ -1,30 +1,30 @@
-Date,Quarter,Partner,Receive,Sixes,Fours,Fifties,Hundreds,Overs,Gap,Wickets,Wides,NoBalls,Catches
-29/05/2015,Domestic,Khalid,0,0,0,0,0,2,8,1,0,0,0
-29/05/2015,Domestic,Mahjoob,23,0,1,0,0,0,0,0,0,0,0
-29/05/2015,Domestic,Shakir,72,5,8,1,0,4,46,1,9,1,1
-29/05/2015,Domestic,Aleem,18,2,0,0,0,0,0,0,0,0,1
-29/05/2015,Domestic,Majid,32,2,3,0,0,5,45,2,9,0,0
-29/05/2015,Domestic,Asim Khan,18,1,2,0,0,0,0,0,0,0,1
-29/05/2015,Domestic,Mehtab,8,1,0,0,0,5,49,1,6,0,0
-29/05/2015,Domestic,Waqas,2,0,0,0,0,3,11,3,2,0,0
-29/05/2015,Domestic,Hamza,0,0,0,0,0,0,0,0,0,0,0
-29/05/2015,Domestic,Nouman,6,0,0,0,0,0,0,0,0,0,0
-29/05/2015,Domestic,Junaid,12,0,1,0,0,0,0,0,0,0,0
-29/05/2015,Domestic,Zubair,17,2,0,0,0,2,19,1,4,1,0
-29/05/2015,Domestic,Omer,2,0,0,0,0,5,40,1,2,0,0
-29/05/2015,Domestic,Iqbal,6,0,0,0,0,3,40,0,2,1,0
-29/05/2015,Domestic,Adnan,60,6,3,0,0,5,22,4,0,0,2
-29/05/2015,Domestic,Imran,6,0,0,0,0,0,0,0,0,0,0
-29/05/2015,Domestic,Asim Manzoor,22,1,3,0,0,3,33,0,0,0,0
-29/05/2015,Domestic,Kaleem,3,0,0,0,0,2,31,0,1,0,0
-5/6/2015,International,Mahjoob,6,0,0,0,0,0,0,0,0,0,0
-5/6/2015,International,Shakir,75,3,7,1,0,3,29,1,6,0,0
-5/6/2015,International,Asim Manzoor,6,0,1,0,0,0,0,0,0,0,0
-5/6/2015,International,Iqbal,15,0,2,0,0,0,0,0,0,0,0
-5/6/2015,International,Asim Khan,18,2,0,0,0,0,0,0,0,0,0
-5/6/2015,International,Omer,1,0,0,0,0,4,43,1,1,0,0
-5/6/2015,International,Adnan,31,3,2,0,0,4,29,3,4,0,0
-5/6/2015,International,Zubair,17,1,1,0,0,0,0,0,0,0,0
-5/6/2015,International,Mehtab,7,1,0,0,0,4,27,3,3,0,0
-5/6/2015,International,Majid,1,0,0,0,0,4,51,2,6,0,0
-5/6/2015,International,Kaleem,4,0,1,0,0,0,0,0,0,0,0
+Date,Quarter,Partner,Match,Inn,Receive,Sixes,Fours,Fifties,Hundreds,Overs,Gap,Wickets,Wides,NoBalls,Catches
+29/05/2015,Domestic,Khalid,1,1,0,0,0,0,0,2,8,1,0,0,0
+29/05/2015,Domestic,Mahjoob,1,1,23,0,1,0,0,0,0,0,0,0,0
+29/05/2015,Domestic,Shakir,1,1,72,5,8,1,0,4,46,1,9,1,1
+29/05/2015,Domestic,Aleem,1,1,18,2,0,0,0,0,0,0,0,0,1
+29/05/2015,Domestic,Majid,1,1,32,2,3,0,0,5,45,2,9,0,0
+29/05/2015,Domestic,Asim Khan,1,1,18,1,2,0,0,0,0,0,0,0,1
+29/05/2015,Domestic,Mehtab,1,1,8,1,0,0,0,5,49,1,6,0,0
+29/05/2015,Domestic,Waqas,1,1,2,0,0,0,0,3,11,3,2,0,0
+29/05/2015,Domestic,Hamza,1,1,0,0,0,0,0,0,0,0,0,0,0
+29/05/2015,Domestic,Nouman,1,1,6,0,0,0,0,0,0,0,0,0,0
+29/05/2015,Domestic,Junaid,1,1,12,0,1,0,0,0,0,0,0,0,0
+29/05/2015,Domestic,Zubair,1,1,17,2,0,0,0,2,19,1,4,1,0
+29/05/2015,Domestic,Omer,1,1,2,0,0,0,0,5,40,1,2,0,0
+29/05/2015,Domestic,Iqbal,1,1,6,0,0,0,0,3,40,0,2,1,0
+29/05/2015,Domestic,Adnan,1,1,60,6,3,0,0,5,22,4,0,0,2
+29/05/2015,Domestic,Imran,1,1,6,0,0,0,0,0,0,0,0,0,0
+29/05/2015,Domestic,Asim Manzoor,1,1,22,1,3,0,0,3,33,0,0,0,0
+29/05/2015,Domestic,Kaleem,1,1,3,0,0,0,0,2,31,0,1,0,0
+5/6/2015,International,Mahjoob,1,1,6,0,0,0,0,0,0,0,0,0,0
+5/6/2015,International,Shakir,1,1,75,3,7,1,0,3,29,1,6,0,2
+5/6/2015,International,Asim Manzoor,1,1,6,0,1,0,0,0,0,0,0,0,0
+5/6/2015,International,Iqbal,1,1,15,0,2,0,0,0,0,0,0,0,0
+5/6/2015,International,Asim Khan,1,1,18,2,0,0,0,0,0,0,0,0,0
+5/6/2015,International,Omer,1,1,1,0,0,0,0,4,43,1,1,0,0
+5/6/2015,International,Adnan,1,1,31,3,2,0,0,4,29,3,4,0,4
+5/6/2015,International,Zubair,1,1,17,1,1,0,0,0,0,0,0,0,0
+5/6/2015,International,Mehtab,1,1,7,1,0,0,0,4,27,3,3,0,0
+5/6/2015,International,Majid,1,1,1,0,0,0,0,4,51,2,6,0,1
+5/6/2015,International,Kaleem,1,1,4,0,1,0,0,0,0,0,0,0,0
