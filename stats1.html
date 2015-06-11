@@ -147,6 +147,7 @@
         $('#dashboard').hide();
       //  var gap_chart = dc.pieChart("#gap");
         var wickets_chart = dc.rowChart("#wickets");
+        var poptype_chart = dc.pieChart("#poptype");
         var matchtype_chart = dc.rowChart("#matchtype");
         var runsscored_chart = dc.rowChart("#runsscored");
         var runsconceded_chart = dc.rowChart("#runsconceded");
@@ -163,6 +164,7 @@
                 var filters = [
                 //    { name: 'gap', value: gap_chart.filters()},
                     { name: 'wickets', value: wickets_chart.filters()},
+                     { name: 'poptype', value: poptype_chart.filters()},
                     { name: 'matchtype', value: matchtype_chart.filters()},
                     { name: 'runsscored', value: runsscored_chart.filters()},
                     { name: 'runsscored', value: runsconceded_chart.filters()}
@@ -193,6 +195,7 @@
                     filter(matchtype_chart, 2);
                     filter(runsscored_chart, 3);
                     filter(runsconceded_chart, 4);
+                    filter(appeal_chart, 5);
                 //    filter(gap_chart, 5);
 
                 }
@@ -245,6 +248,22 @@
                 .colorDomain([0,0])
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
+                
+            cf.poptype = cf.dimension(function(d) { return d.Extras; });
+                var poptype = cf.poptype.group();
+                var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
+                   poptype_chart.width(100).height(100)
+                       .dimension(cf.poptype)
+                       .group(poptypeByTotal)
+                       .innerRadius(10)
+                       .colors(['#8da0cb', /* boys */
+                               '#fc8d62', /* girls */
+                               '#e78ac3', /* men */
+                               ])
+                       .colorDomain([0,4])
+                       .renderLabel(true)
+                       .colorAccessor(function(d, i){return i%4;})
+                       .on("filtered", getFiltersValues);
 
 
             cf.runsscored = cf.dimension(function(d) { return d.Partner; });
