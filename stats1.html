@@ -216,12 +216,12 @@
                   .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
-            cf.quarter = cf.dimension(function(d) { return d.Quarter; });
-            var quarterByTotal = cf.quarter.group().reduceSum(function (d) { return d.Receive; });
-            var quarter = cf.quarter.group();
+            cf.matchtype = cf.dimension(function(d) { return d.Quarter; });
+            var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d) { return d.Receive; });
+            var matchtype = cf.matchtype.group();
             quarter_chart.width(250).height(150)
-                .dimension(cf.quarter)
-                .group(quarterByTotal)
+                .dimension(cf.matchtype)
+                .group(matchtypeByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(4); })
@@ -231,12 +231,12 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
 
-            cf.sector = cf.dimension(function(d) { return d.Partner; });
-            var sectorByTotal = cf.sector.group().reduceSum(function (d) { return d.Wickets; });
-            var sector = cf.sector.group();
+            cf.wickets = cf.dimension(function(d) { return d.Partner; });
+            var wicketsByTotal = cf.wickets.group().reduceSum(function (d) { return d.Wickets; });
+            var wickets = cf.wickets.group();
             sector_chart.width(250).height(500)
-                .dimension(cf.sector)
-                .group(sectorByTotal)
+                .dimension(cf.wickets)
+                .group(wicketsByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(10); })
@@ -246,12 +246,12 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
 
-            cf.partner = cf.dimension(function(d) { return d.Partner; });
-            var partnerByTotal = cf.partner.group().reduceSum(function (d) { return d.Receive; });
-            var partner = cf.partner.group();
+            cf.runsscored = cf.dimension(function(d) { return d.Partner; });
+            var runsscoredByTotal = cf.runsscored.group().reduceSum(function (d) { return d.Receive; });
+            var runsscored = cf.runsscored.group();
             partner_chart.width(250).height(500)
-                .dimension(cf.partner)
-                .group(partnerByTotal)
+                .dimension(cf.runsscored)
+                .group(runsscoredByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(20); })
@@ -260,12 +260,12 @@
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
-            cf.partnergap = cf.dimension(function(d) { return d.Partner; });
-            var partnergapByTotal = cf.partner.group().reduceSum(function (d) { return (d.Gap); });
-            var partnergap = cf.partnergap.group();
+            cf.runsconceded = cf.dimension(function(d) { return d.Partner; });
+            var runsconcededByTotal = cf.runsconceded.group().reduceSum(function (d) { return (d.Gap); });
+            var runsconceded = cf.runsconceded.group();
             partnergap_chart.width(250).height(500)
-                .dimension(cf.partnergap)
-                .group(partnergapByTotal)
+                .dimension(cf.runsconceded)
+                .group(runsconcededByTotal)
                 .elasticX(true)
                 .on("filtered", getFiltersValues)
                 .data(function(group) { return group.top(20); })
