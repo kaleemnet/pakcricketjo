@@ -89,6 +89,16 @@
                  <div id="wickets" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Wickets Taken by Player</h4> </center>
                 </div>
+                <div class="col-md-6">
+                            <center>
+                                <div class="dc-chart" data-intro="Click on this pie chart to filter by Population Cohort." data-position="right" data-step="4" id="poptype">
+                                    <center>
+                                        <h5><strong>Population Type</strong><br ><small># of assistance instance</small></h5>
+                                    </center>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
                  </div>
               <div class="row">
                 <!--
@@ -149,6 +159,7 @@
         var matchtype_chart = dc.rowChart("#matchtype");
         var runsscored_chart = dc.rowChart("#runsscored");
         var runsconceded_chart = dc.rowChart("#runsconceded");
+        var poptype_chart = dc.pieChart("#poptype");
         var gapReceived_chart = dc.barChart("#gapReceived");
 
 
@@ -164,6 +175,7 @@
                     { name: 'wickets', value: wickets_chart.filters()},
                     { name: 'matchtype', value: matchtype_chart.filters()},
                     { name: 'runsscored', value: runsscored_chart.filters()},
+                    { name: 'poptype', value: poptype_chart.filters()},
                     { name: 'runsscored', value: runsconceded_chart.filters()}
                     ];
 
@@ -191,8 +203,9 @@
                     filter(wickets_chart, 1);
                     filter(matchtype_chart, 2);
                     filter(runsscored_chart, 3);
-                    filter(runsconceded_chart, 4);
-                //    filter(gap_chart, 5);
+                    filter(appeal_chart, 4);
+                    filter(runsconceded_chart, 5);
+                //    filter(gap_chart, 6);
 
                 }
             }
@@ -245,6 +258,21 @@
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
+			cf.poptype = cf.dimension(function(d) { return d.Extra; });
+                var poptype = cf.poptype.group();
+                var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
+                   poptype_chart.width(100).height(100)
+                       .dimension(cf.poptype)
+                       .group(poptypeByTotal)
+                       .innerRadius(10)
+                       .colors(['#8da0cb', /* boys */
+                               '#fc8d62', /* girls */
+                               '#e78ac3', /* men */
+                               ])
+                       .colorDomain([0,4])
+                       .renderLabel(true)
+                       .colorAccessor(function(d, i){return i%4;})
+                       .on("filtered", getFiltersValues);
 
             cf.runsscored = cf.dimension(function(d) { return d.Partner; });
             var runsscoredByTotal = cf.runsscored.group().reduceSum(function (d) { return d.Receive; });
