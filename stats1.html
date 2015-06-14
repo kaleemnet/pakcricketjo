@@ -75,8 +75,7 @@
        </div>
        <div class="row">
             <div class="col-md-6">
- 		<div class="row">
-                <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+ 		                <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
 
                 <div id="matchtype"> <h4 align="center">Match Type</h4> </div>   
                 </div>
@@ -84,12 +83,7 @@
                    <div id="runsscored" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Runs Scored by Player</h4> </center>             
                  </div>
-                  <div id="wickets" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
-                  <center> <h4>Wickets Taken by Player</h4> </center>
-                                              </div>
-                <div id="runsconceded" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
-                  <center> <h4>Runs Conceded by Player</h4> </center>
-                </div>
+                  
 <!--
 			<center>
               <div id="poptype" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
@@ -129,7 +123,14 @@
                 </center> 
                 <br>
               </div>
-
+              <div class="col-md-6">
+              <div class="row">
+					<div id="wickets" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+                  <center> <h4>Wickets Taken by Player</h4> </center>
+                                              </div>
+                <div id="runsconceded" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
+                  <center> <h4>Runs Conceded by Player</h4> </center>
+                </div>
             </div>
      
     <div width="100%" style="background:#006CA9; height:25px" align=right>
@@ -384,21 +385,21 @@
             }
             );
 
-            </script>
+              </script>
     <script src="js/bootstrap.js"></script>
 
       <!-- Piwik -->
         <script type="text/javascript">
         var pkBaseURL = (("https:" == document.location.protocol) ? "https://data.unhcr.org/piwik/" : "http://data.unhcr.org/piwik/");
         document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-            </script><script type="text/javascript">
+              </script><script type="text/javascript">
         try {
         var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 14);
         piwikTracker.trackPageView();
         piwikTracker.enableLinkTracking();
         } catch( err ) {}
-            </script><noscript>
-            <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
+              </script><noscript>
+              <p><img src="http://data.unhcr.org/piwik/piwik.php?idsite=14" style="border:0" alt="" /></p></noscript>
       <!-- End Piwik Tracking Code -->
 
 
