@@ -173,13 +173,7 @@
 
 
         d3.csv("stats/data.csv", function(csv_data){
-        var csv_data = new Array();
-csv_data.forEach(function (exp) {
-    csv_data.push({ Category: "Sixes", Value: exp.Sixes });
-    csv_data.push({ Category: "Fours", Value: exp.Fours});
-});
-
-
+    
             var numberFormat = d3.format(",f");
             var cf = crossfilter(csv_data);
             var all = cf.groupAll();
@@ -276,7 +270,7 @@ csv_data.forEach(function (exp) {
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
                            
-            cf.poptype = cf.dimension(function(d) { return d.Category; });
+            cf.poptype = cf.dimension(function(d) { return d.Extra; });
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
                    poptype_chart.width(100).height(100)
