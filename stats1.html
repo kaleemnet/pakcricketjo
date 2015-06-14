@@ -118,7 +118,7 @@
               </div>
 
                   
-<!--			          
+		          
                 
 <div id="gapReceived" class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
                   <center> <h4>Distribution of received funds/gap across Sectors</h4> </center>
@@ -140,7 +140,7 @@
                             <td><img src="images/wash.svg" alt="WASH" height="30px" width="30px"></td>
                             <td></td>
                         </tr>
-                    </table>-->
+                    </table>
                 </center> 
                 <br>
               </div>
@@ -185,7 +185,8 @@
                      { name: 'poptype', value: poptype_chart.filters()},
                     { name: 'matchtype', value: matchtype_chart.filters()},
                     { name: 'runsscored', value: runsscored_chart.filters()},
-                    { name: 'runsscored', value: runsconceded_chart.filters()}
+                    { name: 'runsscored', value: runsconceded_chart.filters()},
+                    { name: 'gapReceived', value: gapReceived_chart.filters()}
                     ];
 
                 var recursiveEncoded = $.param( filters );
@@ -267,9 +268,9 @@
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
-            cf.poptype = cf.dimension(function(d) { return d.Recieve; });
+            cf.poptype = cf.dimension(function(d) { return d.Extra; });
                 var poptype = cf.poptype.group();
-                var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Sixes + d.Fours;} );
+                var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
                    poptype_chart.width(100).height(100)
                        .dimension(cf.poptype)
                        .group(poptypeByTotal)
@@ -313,21 +314,21 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
 
-            cf.wicketsGroup = cf.dimension(function(d) { return d.Sector; });
-            cf.gapReceived = cf.dimension(function(d) { return d.Receive; });
-            var gapByTotal = cf.wicketsGroup.group().reduceSum(function (d) { return (d.Gap); });
-            var receiveByTotal = cf.wicketsGroup.group().reduceSum(function (d) { return d.Receive; });
-            var wicketss = ["Basic Needs","Education","Food","Health","Protection","Sector","Shelter","WASH"];
+            cf.runGroup = cf.dimension(function(d) { return d.Sixes; });
+            cf.gapReceived = cf.dimension(function(d) { return d.Fours; });
+            var gapByTotal = cf.runGroup.group().reduceSum(function (d) { return (d.Fours); });
+            var receiveByTotal = cf.runGroup.group().reduceSum(function (d) { return d.Sixes; });
+            var runs = ["Sixes","Fours"];
             var gapReceived = cf.gapReceived.group();
-            var wicketsGroup = cf.wicketsGroup.group();
+            var runGroup = cf.runGroup.group();
             /* when any bar is clicked, recolor the chart */
             var colorRenderlet = function (_chart) {
                 _chart.selectAll("rect.bar")
                         .on("click", function (d) {
                             function setAttr(selection, keyName) {
                                 selection.style("fill", function (d) {
-                                    if (d[keyName] == "Received") return "#5bc0de";
-                                    else if (d[keyName] == "Gap") return "#e99002";
+                                    if (d[keyName] == "Sixes") return "#5bc0de";
+                                    else if (d[keyName] == "Fours") return "#e99002";
                                 });
                             };
                             setAttr(_chart.selectAll("g.stack").selectAll("rect.bar"), "layer")
@@ -336,10 +337,10 @@
             };            
             gapReceived_chart.width(500).height(240)
                 .margins({top: 50, right: 20, left: 75, bottom: 20})
-                .dimension(wicketsGroup)
+                .dimension(runGroup)
                 .group(receiveByTotal,"Received")
                 .stack(gapByTotal,"Gap")
-                .x(d3.scale.ordinal().domain(wicketsGroup))
+                .x(d3.scale.ordinal().domain(runGroup))
                 .xUnits(dc.units.ordinal)
                 .renderHorizontalGridLines(true)
                 .barPadding(0.2)
