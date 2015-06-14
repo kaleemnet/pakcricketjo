@@ -270,11 +270,9 @@
                 
                 
              var categoryList = new Array();
-csv_data.forEach(function (exp) {
+cf.forEach(function (exp) {
     categoryList.push({ Category: "Sixes", Value: exp.Sixes });
-    categoryList.push({ Category: "Fours", Value: exp.Fours });
-
-                
+    categoryList.push({ Category: "Fours", Value: exp.Fours });              
             cf.poptype = cf.dimension(function(d) { return d.Category; });
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
