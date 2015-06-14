@@ -267,7 +267,7 @@
                 .colorAccessor(function(d, i){return 1;})
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
-            cf.poptype = cf.dimension(function(d) { return d.Sixes & d.Fours; });
+            cf.poptype = cf.dimension(function(d) { return d.Recieve; });
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Sixes + d.Fours;} );
                    poptype_chart.width(100).height(100)
