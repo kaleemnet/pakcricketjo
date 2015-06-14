@@ -173,10 +173,10 @@
 
 
         d3.csv("stats/data.csv", function(csv_data){
-        var categoryList = new Array();
+        var csv_data = new Array();
 csv_data.forEach(function (exp) {
-    categoryList.push({ Category: "Sixes", Value: exp.Sixes });
-    categoryList.push({ Category: "Fours", Value: exp.Fours});
+    csv_data.push({ Category: "Sixes", Value: exp.Sixes });
+    csv_data.push({ Category: "Fours", Value: exp.Fours});
 });
 
 
