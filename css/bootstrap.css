@@ -68,7 +68,7 @@ h1 {
 }
 mark {
   background: #ff0;
-  color: #000;
+  color: #F7F8F4;
 }
 small {
   font-size: 80%;
@@ -5039,7 +5039,7 @@ a.thumbnail.active {
 .progress-bar-striped {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15)%2025%25,%20transparent%2025%25,%20transparent%2050%25,%20rgba(255,%20255,%20255,%200.15)%2050%25,%20rgba(255,%20255,%20255,%200.15)%2075%25,%20transparent%2075%25,%20transparent)');
+  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15');
   -webkit-background-size: 40px 40px;
           background-size: 40px 40px
 }
@@ -5055,7 +5055,7 @@ a.thumbnail.active {
 .progress-striped .progress-bar-success {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15)%2025%25,%20transparent%2025%25,%20transparent%2050%25,%20rgba(255,%20255,%20255,%200.15)%2050%25,%20rgba(255,%20255,%20255,%200.15)%2075%25,%20transparent%2075%25,%20transparent)');
+  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15');
 }
 .progress-bar-info {
   background-color: #3498db;
@@ -5063,7 +5063,7 @@ a.thumbnail.active {
 .progress-striped .progress-bar-info {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15)%2025%25,%20transparent%2025%25,%20transparent%2050%25,%20rgba(255,%20255,%20255,%200.15)%2050%25,%20rgba(255,%20255,%20255,%200.15)%2075%25,%20transparent%2075%25,%20transparent)');
+  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15');
 }
 .progress-bar-warning {
   background-color: #f39c12;
@@ -5071,7 +5071,7 @@ a.thumbnail.active {
 .progress-striped .progress-bar-warning {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15)%2025%25,%20transparent%2025%25,%20transparent%2050%25,%20rgba(255,%20255,%20255,%200.15)%2050%25,%20rgba(255,%20255,%20255,%200.15)%2075%25,%20transparent%2075%25,%20transparent)');
+  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15');
 }
 .progress-bar-danger {
   background-color: #e74c3c;
@@ -5079,7 +5079,7 @@ a.thumbnail.active {
 .progress-striped .progress-bar-danger {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15)%2025%25,%20transparent%2025%25,%20transparent%2050%25,%20rgba(255,%20255,%20255,%200.15)%2050%25,%20rgba(255,%20255,%20255,%200.15)%2075%25,%20transparent%2075%25,%20transparent)');
+  background-image: url('linear-gradient(45deg,%20rgba(255,%20255,%20255,%200.15');
 }
 .media {
   margin-top: 15px;
@@ -6153,7 +6153,7 @@ button.close {
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
-  background-image: url('linear-gradient(to%20right,%20rgba(0,%200,%200,%200.5)%200%25,%20rgba(0,%200,%200,%200.0001)%20100%25)');
+  background-image: url('linear-gradient(to%20right,%20rgba(0,%200,%200,%200.5');
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1)
 }
@@ -6163,7 +6163,7 @@ button.close {
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
-  background-image: url('linear-gradient(to%20right,%20rgba(0,%200,%200,%200.0001)%200%25,%20rgba(0,%200,%200,%200.5)%20100%25)');
+  background-image: url('linear-gradient(to%20right,%20rgba(0,%200,%200,%200.0001');
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1)
 }
