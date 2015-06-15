@@ -115,6 +115,8 @@
  
       <ul class="nav navbar-nav">
  
+      <ul class="nav navbar-nav">
+ 
            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
@@ -182,6 +184,7 @@
                         </tr>
                     </table>-->
                 </center> 
+      <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
@@ -514,6 +517,42 @@
       <ul class="nav navbar-nav">
  
               &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
               &nbsp;<ul class="nav navbar-nav">
      
       <ul class="nav navbar-nav">
@@ -561,11 +600,13 @@
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <span  class="demoTableRow"><font color="#FFFFFF">
             Produced by Kaleem ur Rehman with the support from Mukesh Karn. </font>
          </span> 
       <ul class="nav navbar-nav">
                 <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
@@ -723,7 +764,6 @@
             cf.poptype = cf.dimension(function(d) {return d.Category;}).filter(['Quarter']);
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
-                var Category = ["Sixes","Fours"];
                    poptype_chart.width(150).height(150)
                        .dimension(cf.poptype)
                        .group(poptypeByTotal)
@@ -735,7 +775,10 @@
                        .colorDomain([0,4])
                        .renderLabel(true)
                        .colorAccessor(function(d, i){return i%4;})
-                       .on("filtered", getFiltersValues);
+                       .on("filtered", getFiltersValues);                 
+  var filterDimension = cf.dimension(function(d) {return d.Category;});
+  filterDimension.filter(function (d) { return d === 'Sixes' || d === 'Fours'; });
+  
 
 
             cf.runsscored = cf.dimension(function(d) { return d.Partner; });
@@ -1129,6 +1172,29 @@
     </ul>
 
 
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
     </ul>
     </ul>
     </ul>
