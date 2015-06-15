@@ -107,6 +107,8 @@
  
       <ul class="nav navbar-nav">
  
+      <ul class="nav navbar-nav">
+ 
            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
@@ -174,6 +176,7 @@
                         </tr>
                     </table>-->
                 </center> 
+      <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
@@ -378,6 +381,34 @@
       <ul class="nav navbar-nav">
  
               &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
               &nbsp;<ul class="nav navbar-nav">
      
       <ul class="nav navbar-nav">
@@ -421,11 +452,13 @@
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <span  class="demoTableRow"><font color="#FFFFFF">
             Produced by Kaleem ur Rehman with the support from Mukesh Karn. </font>
          </span> 
       <ul class="nav navbar-nav">
                 <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
@@ -576,7 +609,7 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
                            
-            cf.poptype = cf.dimension(function(d) { return d.Category; } );
+            cf.poptype = cf.dimension(function(d) {if (d.category=="Quarter") {return d.Value;}else{return 0;}});
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
                 var Category = ["Sixes","Fours"];
@@ -669,7 +702,7 @@
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.Sixes; });
+            var byReceived = cf.dimension(function(d) { return d.Category=="Sixes"; });
             var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Sixes; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
@@ -907,6 +940,25 @@
     </ul>
 
 
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
     </ul>
     </ul>
     </ul>
