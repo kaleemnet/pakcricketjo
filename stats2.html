@@ -87,6 +87,10 @@
  
       <ul class="nav navbar-nav">
  
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
@@ -164,6 +168,8 @@
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav">
                 <br>
               &nbsp;<ul class="nav navbar-nav">
  
@@ -172,6 +178,24 @@
       <ul class="nav navbar-nav">
  
               &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
  
       <ul class="nav navbar-nav">
  
@@ -211,11 +235,15 @@
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <span  class="demoTableRow"><font color="#FFFFFF">
             Produced by Kaleem ur Rehman with the support from Mukesh Karn. </font>
          </span> 
       <ul class="nav navbar-nav">
                 <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
@@ -252,6 +280,12 @@
     		categoryList.push({ Category: "Receive", Value: exp.Receive });
     		categoryList.push({ Category: "Sixes", Value: exp.Sixes });
     		categoryList.push({ Category: "Fours", Value: exp.Fours });
+    		categoryList.push({ Category: "Fifties", Value: exp.Fifties });
+			categoryList.push({ Category: "Hundreds", Value: exp.Hundreds });
+			categoryList.push({ Category: "Overs", Value: exp.Overs });
+			categoryList.push({ Category: "Gap", Value: exp.Gap });
+			categoryList.push({ Category: "Wickets", Value: exp.Wickets });
+			categoryList.push({ Category: "Quarter", Value: exp.Quarter });
 			});
 
             var cf = crossfilter(categoryList);
@@ -319,8 +353,8 @@
                   .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
-            cf.matchtype = cf.dimension(function(d) { return d.Quarter; });
-            var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d) { return d.Receive; });
+            cf.matchtype = cf.dimension(function(d) { return d.Category="Quarter"; });
+            var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d) { return d.Value; });
             var matchtype = cf.matchtype.group();
             matchtype_chart.width(250).height(150)
                 .dimension(cf.matchtype)
@@ -437,7 +471,7 @@
                 .group(all);
 
             var byRequired = cf.dimension(function(d) { return d.Category=="Receive"; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Category=="Receive"; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Value; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
@@ -555,6 +589,25 @@
     </ul>
 
 
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
+    </ul>
     </ul>
     </ul>
     </ul>
