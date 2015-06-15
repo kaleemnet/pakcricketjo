@@ -117,6 +117,8 @@
  
       <ul class="nav navbar-nav">
  
+      <ul class="nav navbar-nav">
+ 
            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
@@ -184,6 +186,7 @@
                         </tr>
                     </table>-->
                 </center> 
+      <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
@@ -553,6 +556,44 @@
       <ul class="nav navbar-nav">
  
               &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
               &nbsp;<ul class="nav navbar-nav">
      
       <ul class="nav navbar-nav">
@@ -578,6 +619,7 @@
     <div width="100%" style="background:#006CA9; height:25px" align=right>
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
@@ -628,6 +670,7 @@
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         &nbsp;&nbsp;&nbsp;
     </div>
 
@@ -650,23 +693,23 @@
         d3.csv("stats/data.csv", function(csv_data){
     
             var numberFormat = d3.format(",f");
-            var categoryList = new Array();
-			csv_data.forEach(function (exp) {
-    		categoryList.push({ Category: "Match", Value: exp.Match });
-    		categoryList.push({ Category: "Inn", Value: exp.Inn });
-    		categoryList.push({ Category: "Receive", Value: exp.Receive });
-    		categoryList.push({ Category: "Sixes", Value: exp.Sixes });
-    		categoryList.push({ Category: "Fours", Value: exp.Fours });
-    		categoryList.push({ Category: "Fifties", Value: exp.Fifties });
-			categoryList.push({ Category: "Hundreds", Value: exp.Hundreds });
-			categoryList.push({ Category: "Overs", Value: exp.Overs });
-			categoryList.push({ Category: "Gap", Value: exp.Gap });
-			categoryList.push({ Category: "Wickets", Value: exp.Wickets });
-			categoryList.push({ Category: "Quarter", Value: exp.Quarter });
-			categoryList.push({ Category: "Partner", Value: exp.Partner });
-			});
+        //    var categoryList = new Array();
+		//	csv_data.forEach(function (exp) {
+    	//	categoryList.push({ Category: "Match", Value: exp.Match });
+    	//	categoryList.push({ Category: "Inn", Value: exp.Inn });
+    	//	categoryList.push({ Category: "Receive", Value: exp.Receive });
+    	//	categoryList.push({ Category: "Sixes", Value: exp.Sixes });
+    	//	categoryList.push({ Category: "Fours", Value: exp.Fours });
+    	//	categoryList.push({ Category: "Fifties", Value: exp.Fifties });
+		//	categoryList.push({ Category: "Hundreds", Value: exp.Hundreds });
+		//	categoryList.push({ Category: "Overs", Value: exp.Overs });
+		//	categoryList.push({ Category: "Gap", Value: exp.Gap });
+		//	categoryList.push({ Category: "Wickets", Value: exp.Wickets });
+		//	categoryList.push({ Category: "Quarter", Value: exp.Quarter });
+		//	categoryList.push({ Category: "Partner", Value: exp.Partner });
+		//	});
 
-            var cf = crossfilter(categoryList);
+            var cf = crossfilter(csv_data);
             var all = cf.groupAll();
             // Implement bookmarking chart filters status --> Thanks to https://github.com/franckalbinet
             // Serializing filters values in URL
@@ -731,8 +774,8 @@
                   .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
-            cf.matchtype = cf.dimension(function(d) {(d.Category=="Quarter";)});
-            var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d){ return d.Value; });
+            cf.matchtype = cf.dimension(function(d) {(d.Quarter;)});
+            var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d){ return d.Quarter; });
             var matchtype = cf.matchtype.group();
             matchtype_chart.width(250).height(150)
                 .dimension(cf.matchtype)
@@ -746,8 +789,8 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
 
 
-            cf.wickets = cf.dimension(function(d) { return d.Category=="Partner"; });
-            var wicketsByTotal = cf.wickets.group().reduceSum(function (d) { return d.Value; });
+            cf.wickets = cf.dimension(function(d) { return d.Partner; });
+            var wicketsByTotal = cf.wickets.group().reduceSum(function (d) { return d.Wickets; });
             var wickets = cf.wickets.group();
             wickets_chart.width(250).height(500)
                 .dimension(cf.wickets)
@@ -761,7 +804,7 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
                            
-            cf.poptype = cf.dimension(function(d) {return d.Category;}).filter(['Quarter']);
+            cf.poptype = cf.dimension(function(d) { return d.Extra; });
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
                    poptype_chart.width(150).height(150)
@@ -776,8 +819,8 @@
                        .renderLabel(true)
                        .colorAccessor(function(d, i){return i%4;})
                        .on("filtered", getFiltersValues);                 
-  var filterDimension = cf.dimension(function(d) {return d.Category;});
-  filterDimension.filter(function (d) { return d === 'Sixes' || d === 'Fours'; });
+ // var filterDimension = cf.dimension(function(d) {return d.Category;});
+ // filterDimension.filter(function (d) { return d === 'Sixes' || d === 'Fours'; });
   
 
 
@@ -850,13 +893,13 @@
                 .dimension(cf)
                 .group(all);
 
-            var byRequired = cf.dimension(function(d) { return d.Category=="Receive"; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Value; });
+            var byRequired = cf.dimension(function(d) { return d.Receive; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Receive; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
 
-            var byReceived = cf.dimension(function(d) { return d.Category=="Sixes"; });
+            var byReceived = cf.dimension(function(d) { return d.Sixes; });
             var byReceivedGroup = byReceived.groupAll().reduceSum(function (d) { return d.Sixes; });
             dc.numberDisplay("#totalreceived")
                    .valueAccessor(function(d){return +d})
@@ -1194,6 +1237,30 @@
     </ul>
 
 
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
     </ul>
     </ul>
     </ul>
