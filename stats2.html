@@ -95,7 +95,8 @@
  		                <div class="col-xs-6" data-step="1" data-intro="Click on this pie chart to filter by wickets." data-position='right'>
  		                
                 <div id="matchtype"> <h4 align="center">Match Type</h4> </div> 
-				<div id="poptype" align="center"> <h4 align="center"><center> <h4>Extras/Catches</h4> </center></h4> </div> 
+				<div id="poptype" align="center"> <h4 align="center"></h4>
+                  <center> <h4>Extras/Catches</h4> </center></h4> </div> 
 				
 				
                 </div>
@@ -173,7 +174,16 @@
         d3.csv("stats/data.csv", function(csv_data){
     
             var numberFormat = d3.format(",f");
-            var cf = crossfilter(csv_data);
+            var categoryList = new Array();
+			csv_data.forEach(function (exp) {
+    		categoryList.push({ Category: "Match", Value: exp.Match });
+    		categoryList.push({ Category: "Inn", Value: exp.Inn });
+    		categoryList.push({ Category: "Receive", Value: exp.Receive });
+    		categoryList.push({ Category: "Sixes", Value: exp.Sixes });
+    		categoryList.push({ Category: "Fours", Value: exp.Fours });
+			});
+
+            var cf = crossfilter(categoryList);
             var all = cf.groupAll();
             // Implement bookmarking chart filters status --> Thanks to https://github.com/franckalbinet
             // Serializing filters values in URL
@@ -268,7 +278,7 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
                            
-            cf.poptype = cf.dimension(function(d) { return d.Extra; });
+            cf.poptype = cf.dimension(function(d) { return d.Category; });
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
                    poptype_chart.width(150).height(150)
