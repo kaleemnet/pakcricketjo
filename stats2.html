@@ -278,7 +278,7 @@
                 .xAxis().ticks(4).tickFormat(d3.format("s"));
                 
                            
-            cf.poptype = cf.dimension(function(d) { return d.Category; });
+            cf.poptype = cf.dimension(function(d) { return d.Category=="Sixes" && d.Category=="Fours"; });
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
                    poptype_chart.width(150).height(150)
