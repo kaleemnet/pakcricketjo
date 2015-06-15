@@ -281,7 +281,7 @@
             cf.poptype = cf.dimension(function(d) { return d.Category; } );
                 var poptype = cf.poptype.group();
                 var poptypeByTotal = cf.poptype.group().reduceSum(function (d) { return d.Value;} );
-                var category = ["Sixes","Fours"];
+                var Category = ["Sixes","Fours"];
                    poptype_chart.width(150).height(150)
                        .dimension(cf.poptype)
                        .group(poptypeByTotal)
