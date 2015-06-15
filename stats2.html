@@ -85,6 +85,8 @@
  
       <ul class="nav navbar-nav">
  
+      <ul class="nav navbar-nav">
+ 
            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
@@ -161,10 +163,17 @@
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav">
                 <br>
               &nbsp;<ul class="nav navbar-nav">
  
               &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
  
       <ul class="nav navbar-nav">
  
@@ -201,11 +210,13 @@
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <span  class="demoTableRow"><font color="#FFFFFF">
             Produced by Kaleem ur Rehman with the support from Mukesh Karn. </font>
          </span> 
       <ul class="nav navbar-nav">
                 <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
@@ -426,7 +437,7 @@
                 .group(all);
 
             var byRequired = cf.dimension(function(d) { return d.Category=="Receive"; });
-            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Value; });
+            var byRequiredGroup = byRequired.groupAll().reduceSum(function (d) { return d.Category=="Receive"; });
             dc.numberDisplay("#totalrequired")
                    .valueAccessor(function(d){return +d})
                     .group(byRequiredGroup);
@@ -537,6 +548,14 @@
     </ul>
 
 
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
     </ul>
     </ul>
     </ul>
