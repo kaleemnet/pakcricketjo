@@ -99,6 +99,8 @@
  
       <ul class="nav navbar-nav">
  
+      <ul class="nav navbar-nav">
+ 
            <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
@@ -166,6 +168,7 @@
                         </tr>
                     </table>-->
                 </center> 
+      <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
       <ul class="nav navbar-nav">
@@ -274,6 +277,26 @@
       <ul class="nav navbar-nav">
  
               &nbsp;<ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+      <ul class="nav navbar-nav">
+ 
+              &nbsp;<ul class="nav navbar-nav">
               &nbsp;<ul class="nav navbar-nav">
      
       <ul class="nav navbar-nav">
@@ -313,11 +336,13 @@
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <span  class="demoTableRow"><font color="#FFFFFF">
             Produced by Kaleem ur Rehman with the support from Mukesh Karn. </font>
          </span> 
       <ul class="nav navbar-nav">
                 <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
         <ul class="nav navbar-nav">
@@ -434,7 +459,7 @@
                   .html(function (d) { return "<span style='color: #f0027f'>" + d.data.key + "</span> : " + numberFormat(d.y);});
 
 
-            cf.matchtype = cf.dimension(function(d) {(d.Category=="Quarter");});
+            cf.matchtype = cf.dimension(function(d) {if (d.Category=="Quarter") {return d.Value;}});
             var matchtypeByTotal = cf.matchtype.group().reduceSum(function (d) { return d.Value; });
             var matchtype = cf.matchtype.group();
             matchtype_chart.width(250).height(150)
@@ -733,6 +758,21 @@
     </ul>
 
 
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+    </ul>
+
+
+    </ul>
     </ul>
     </ul>
     </ul>
