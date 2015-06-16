@@ -77,7 +77,10 @@
             <a class="btn btn-default">Runs Scored <a  class="btn btn-primary"><span id="totalrequired" class="number-display"></span></a></a>
             <a class="btn btn-default">Sixes <a  class="btn btn-info"><span id="totalreceived" class="number-display"></span></a></a>
             <a class="btn btn-default">Fours <a  class="btn btn-info"><span id="totalgap" class="number-display"></span></a></a>
+            <a class="btn btn-default">Fifties <a  class="btn btn-info"><span id="totalfifties" class="number-display"></span></a></a>
+            <a class="btn btn-default">Hundreds <a  class="btn btn-info"><span id="totalhundreds" class="number-display"></span></a></a>
             <a class="btn btn-default">Wickets <a  class="btn btn-warning"><span id="totalwickets" class="number-display"></span></a></a>
+            <a class="btn btn-default">Overs <a  class="btn btn-warning"><span id="totalovers" class="number-display"></span></a></a>
            <!--
            <a class="btn btn-default">Gap <a  class="btn btn-danger">% <span id="totalpercentage" class="number-display"></span></a></a>
            -->
@@ -383,6 +386,23 @@
                    .valueAccessor(function(d){return +d})
                     .group(byWicketsGroup);
 
+			var byOvers = cf.dimension(function(d) { return d.Overs; });
+            var byOversGroup = byOvers.groupAll().reduceSum(function (d) { return d.Overs; });
+            dc.numberDisplay("#totalovers")
+                   .valueAccessor(function(d){return +d})
+                    .group(byOversGroup);
+			
+			var byFifties = cf.dimension(function(d) { return d.Fifties; });
+            var byFiftiesGroup = byFifties.groupAll().reduceSum(function (d) { return d.Fifties; });
+            dc.numberDisplay("#totalfifties")
+                   .valueAccessor(function(d){return +d})
+                    .group(byFiftiesGroup);
+
+			var byHundreds = cf.dimension(function(d) { return d.Hundreds; });
+            var byHundredsGroup = byHundreds.groupAll().reduceSum(function (d) { return d.Hundreds; });
+            dc.numberDisplay("#totalhundreds")
+                   .valueAccessor(function(d){return +d})
+                    .group(byHundredsGroup);
 			
           // var byPercentage = cf.dimension(function(d) { return d.Percentage; });
           // var byPercentageGroup = byPercentage.groupAll().reduceSum(function (d) { return d.Percentage; });
