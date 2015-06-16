@@ -1,5 +1,5 @@
 Date,Quarter,Partner,Match,Inn,Receive,Sixes,Fours,Fifties,Hundreds,Overs,Gap,Wickets,Wides,NoBalls,Catches,Extra,Value
-29/05/2015,Domestic,Khalid,1,1,0,0,0,0,0,2,8,0,0,0,0,Wides,1
+29/05/2015,Domestic,Khalid,1,1,0,0,0,0,0,2,8,1,0,0,0,Wides,1
 29/05/2015,Domestic,Mahjoob,1,1,23,0,1,0,0,0,0,0,0,0,0,,
 29/05/2015,Domestic,Shakir,1,1,72,5,8,1,0,4,46,1,0,,,Wides,9
 29/05/2015,Domestic,Aleem,1,1,18,2,0,0,0,0,0,0,0,0,,,
@@ -51,3 +51,4 @@ Date,Quarter,Partner,Match,Inn,Receive,Sixes,Fours,Fifties,Hundreds,Overs,Gap,Wi
 12/6/2015,International,Hamza,1,1,29,3,2,0,0,0,0,0,0,0,0,,
 12/6/2015,International,Dr. Mateen,1,1,4,0,0,0,0,0,0,0,0,0,0,,
 12/6/2015,International,Salah,,,,,,,,,,,,,,No Balls,1
+12/6/2015,International,Salah,,,,,,,,,,,,,,Catches,1
